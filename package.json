@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@contentful/rich-text-types": "^14.1.2",
+    "@headlessui/react": "^0.2.0",
     "next": "latest",
     "next-seo": "^4.17.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-feather": "^2.0.9"
   },
   "devDependencies": {
     "@types/node": "^14.14.9",
