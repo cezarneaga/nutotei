@@ -1,8 +1,36 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Facebook, Mail } from "react-feather";
+const parties = [
+  {
+    partyShort: "PSD",
+    party: "Partidul Social Democrat",
+    slug: "psd",
+  },
+  {
+    partyShort: "PNL",
+    party: "Partidul Național Liberal",
+    slug: "pnl",
+  },
+  {
+    partyShort: "PMP",
+    party: "Partidul Mișcarea Populară",
+    slug: "pmp",
+  },
+  {
+    partyShort: "PRO Romania",
+    party: "PRO Romania Social Liberal",
+    slug: "pro-romania",
+  },
+  {
+    partyShort: "ALDE",
+    party: "Partidul Alianța Liberalilor și Democraților",
+    slug: "alde",
+  },
+];
 export default function Nav() {
   const [show, setShow] = useState("");
   const [showNav, setShowNav] = useState(false);
@@ -98,51 +126,29 @@ export default function Nav() {
                 >
                   <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div className="z-20 relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                      <a
-                        href="#"
-                        className="-m-3 p-3 block rounded-md hover:bg-gray-50"
-                      >
-                        <p className="text-base font-medium text-gray-900">
-                          PSD
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          Partidul Social Democrat
-                        </p>
-                      </a>
-
-                      <a
-                        href="#"
-                        className="-m-3 p-3 block rounded-md hover:bg-gray-50"
-                      >
-                        <p className="text-base font-medium text-gray-900">
-                          PSD
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          Partidul Social Democrat
-                        </p>
-                      </a>
-                      <a
-                        href="#"
-                        className="-m-3 p-3 block rounded-md hover:bg-gray-50"
-                      >
-                        <p className="text-base font-medium text-gray-900">
-                          PSD
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          Partidul Social Democrat
-                        </p>
-                      </a>
-                      <a
-                        href="#"
-                        className="-m-3 p-3 block rounded-md hover:bg-gray-50"
-                      >
-                        <p className="text-base font-medium text-gray-900">
-                          PSD
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          Partidul Social Democrat
-                        </p>
-                      </a>
+                      {parties.map((party) => (
+                        <a
+                          key={party.slug}
+                          href={`/candidati/${party.slug}`}
+                          className="-m-3 p-3 flex rounded-md hover:bg-gray-50"
+                        >
+                          <div className="flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md">
+                            <Image
+                              src={`/images/parties/${party.slug}.png`}
+                              height={40}
+                              width={40}
+                            />
+                          </div>
+                          <div className="ml-4 text-base font-medium text-gray-900">
+                            <p className="text-base font-medium text-gray-900">
+                              {party.partyShort}
+                            </p>
+                            <p className="mt-1 text-sm text-gray-500">
+                              {party.party}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -152,7 +158,7 @@ export default function Nav() {
 
           <Link href="/despre">
             <span
-              className={`text-base font-medium ${
+              className={`text-base cursor-pointer font-medium ${
                 activeRoute === "/despre" ? "text-gray-900" : "text-gray-500"
               } hover:text-gray-900`}
             >
@@ -161,7 +167,7 @@ export default function Nav() {
           </Link>
           <Link href="/cautare">
             <span
-              className={`text-base font-medium ${
+              className={`text-base cursor-pointer font-medium ${
                 activeRoute === "/cautare" ? "text-gray-900" : "text-gray-500"
               } hover:text-gray-900`}
             >
@@ -235,77 +241,23 @@ export default function Nav() {
                 </div>
                 <div className="mt-6">
                   <nav className="grid grid-cols-2 gap-7">
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
-
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
-
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
-
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
-
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
-
-                    <a
-                      href="#"
-                      className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                    >
-                      <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
-                        psdlogo
-                      </div>
-                      <div className="ml-4 text-base font-medium text-gray-900">
-                        PSD
-                      </div>
-                    </a>
+                    {parties.map((party) => (
+                      <a
+                        href={`/candidati/${party.slug}`}
+                        className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
+                      >
+                        <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white">
+                          <Image
+                            src={`/images/parties/${party.slug}.png`}
+                            height={40}
+                            width={40}
+                          />
+                        </div>
+                        <div className="ml-4 text-base font-medium text-gray-900">
+                          {party.partyShort}
+                        </div>
+                      </a>
+                    ))}
                   </nav>
                 </div>
               </div>
