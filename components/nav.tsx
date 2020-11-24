@@ -312,28 +312,31 @@ export default function Nav() {
               <div className="py-6 px-5">
                 <div className="grid grid-cols-2 gap-4">
                   <a
-                    href="https://facebook.com/valeriu.nicolae.39"
-                    target="_blank"
+                    href="/despre"
                     className="text-base font-medium text-gray-500 hover:text-gray-900"
                   >
                     Despre
                   </a>
                   <a
-                    href="mailto:valeriu@nutotei.ro"
+                    href="/cautare"
                     className="ml-8 text-base font-medium text-gray-500 hover:text-gray-900"
                   >
                     Cautare
                   </a>
+                </div>
+              </div>
+              <div className="py-6 px-5">
+                <div className="grid grid-cols-2 gap-4">
                   <a
                     href="https://facebook.com/valeriu.nicolae.39"
                     target="_blank"
-                    className="flex whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                    className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                   >
                     <Facebook />
                   </a>
                   <a
                     href="mailto:valeriu@nutotei.ro"
-                    className="flex ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                    className="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                   >
                     <Mail />
                   </a>
