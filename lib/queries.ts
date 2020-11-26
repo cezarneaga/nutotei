@@ -86,6 +86,26 @@ export const operationsDoc = `
       }
     }
   }
+  query CandidatesByParty($party: String!, $limit: Int!) {
+    candidateCollection(where: {party: $party}, order: sys_publishedAt_DESC, limit: $limit) {
+      items {
+        sys {
+          id
+          publishedAt
+        }
+        name
+        slug
+        review
+        mainImage {
+          url
+          title
+          width
+          height
+        }
+      }
+    }
+  }
+
   query AllCandidatesWithSlugs {
     candidateCollection(
       where: { slug_exists: true }

@@ -4,33 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Facebook, Mail } from "react-feather";
-const parties = [
-  {
-    partyShort: "PSD",
-    party: "Partidul Social Democrat",
-    slug: "psd",
-  },
-  {
-    partyShort: "PNL",
-    party: "Partidul Național Liberal",
-    slug: "pnl",
-  },
-  {
-    partyShort: "PMP",
-    party: "Partidul Mișcarea Populară",
-    slug: "pmp",
-  },
-  {
-    partyShort: "PRO Romania",
-    party: "PRO Romania Social Liberal",
-    slug: "pro-romania",
-  },
-  {
-    partyShort: "ALDE",
-    party: "Partidul Alianța Liberalilor și Democraților",
-    slug: "alde",
-  },
-];
+import { parties } from "lib/parties";
+
 export function Nav() {
   const [show, setShow] = useState("");
   const [showNav, setShowNav] = useState(false);

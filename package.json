@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.2",
     "@headlessui/react": "^0.2.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/typography": "^0.3.1",
     "next": "latest",
     "next-seo": "^4.17.0",
     "react": "^17.0.1",

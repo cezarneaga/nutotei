@@ -52,6 +52,19 @@ export async function getCandidates(limit: number, preview: boolean) {
   );
   return extractCandidateEntries(entries);
 }
+export async function getCandidatesByParty(
+  party: string,
+  limit: number,
+  preview: boolean
+) {
+  const entries = await fetchGraphQL(
+    operationsDoc,
+    "CandidatesByParty",
+    { party, limit, preview },
+    preview
+  );
+  return extractCandidateEntries(entries);
+}
 export async function getCandidateBySlug(
   slug: string,
   limit: number,
@@ -70,8 +83,8 @@ export async function getCandidateBySlug(
     preview
   );
   return {
-    project: extractCandidate(entry),
-    moreProjects: extractCandidateEntries(entries),
+    candidate: extractCandidate(entry),
+    moreCandidates: extractCandidateEntries(entries),
   };
 }
 export async function getAllCandidatesWithSlugs() {
