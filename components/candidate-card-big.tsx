@@ -50,18 +50,20 @@ export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
         </div>
 
         <ul className="flex space-x-5">
-          <li>
-            <a
-              href={candidate.facebookLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Sursa Facebook"
-              className="text-gray-400 hover:text-gray-500 cursor-pointer clickable"
-            >
-              <span className="sr-only">Sursa Facebook</span>
-              <Facebook size={18} />
-            </a>
-          </li>
+          {candidate.facebookLink && (
+            <li>
+              <a
+                href={candidate.facebookLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Sursa Facebook"
+                className="text-gray-400 hover:text-gray-500 cursor-pointer clickable"
+              >
+                <span className="sr-only">Sursa Facebook</span>
+                <Facebook size={18} />
+              </a>
+            </li>
+          )}
           {candidate?.documentsCollection?.items.map((document) => (
             <li key={document.fileName}>
               <a

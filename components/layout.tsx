@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useHasScrolledDown } from "lib/useHasScrolledDown";
 import { Nav } from "components/nav";
+import { Footer } from "components/footer";
 
 export default function Layout({
   preview,
@@ -22,6 +23,7 @@ export default function Layout({
     <>
       <Nav />
       {children}
+      <Footer />
     </>
   );
 }

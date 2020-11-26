@@ -9,12 +9,7 @@ export const operationsDoc = `
         name
         slug
         review
-        mainImage {
-          url
-          title
-          width
-          height
-        }
+        ...imageUrl
         documentsCollection {
           items {
             title
@@ -39,12 +34,7 @@ export const operationsDoc = `
         name
         slug
         review
-        mainImage {
-          url
-          title
-          width
-          height
-        }
+        ...imageUrl
         content{
           json
         }
@@ -76,13 +66,8 @@ export const operationsDoc = `
         name
         slug
         review
-        mainImage {
-          url
-          title
-          width
-          height
-        }
         party
+        ...imageUrl
       }
     }
   }
@@ -96,12 +81,7 @@ export const operationsDoc = `
         name
         slug
         review
-        mainImage {
-          url
-          title
-          width
-          height
-        }
+        ...imageUrl
       }
     }
   }
@@ -121,6 +101,14 @@ export const operationsDoc = `
       items {
         party
       }
+    }
+  }
+  fragment imageUrl on Candidate {
+    mainImage {
+      url
+      title
+      width
+      height
     }
   }
 `;
