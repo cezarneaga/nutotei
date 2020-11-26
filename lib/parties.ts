@@ -1,4 +1,4 @@
-interface Party {
+export interface Party {
   partyShort: string;
   party: string;
   slug: string;

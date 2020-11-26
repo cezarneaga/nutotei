@@ -9,7 +9,7 @@ import Layout from "components/layout";
 
 import { getCandidateBySlug, getAllCandidatesWithSlugs } from "lib/api";
 import { Candidate } from "../../lib/contentTypes";
-import { Facebook, ExternalLink } from "react-feather";
+import { Facebook } from "react-feather";
 type Props = {
   candidate: Candidate;
   moreCandidates: Candidate[];
