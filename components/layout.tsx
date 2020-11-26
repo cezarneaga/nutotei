@@ -21,7 +21,7 @@ export default function Layout({
   return (
     <>
       <Nav />
-      <div>test</div>
+      {children}
     </>
   );
 }

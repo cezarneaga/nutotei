@@ -1,6 +1,6 @@
 export const operationsDoc = `
   query CandidateList($limit: Int!) {
-    candidateCollection(limit: $limit) {
+    candidateCollection(limit: $limit,order:sys_publishedAt_DESC) {
       items {
         sys {
           id
@@ -15,46 +15,55 @@ export const operationsDoc = `
           width
           height
         }
+        documentsCollection {
+          items {
+            title
+            description
+            fileName
+            size
+            url
+          }
+        }
         party
+        facebookLink
       }
     }
   }
   query CandidateBySlug($slug: String!, $preview: Boolean!) {
     candidateCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
-        items {
-          sys {
-            id
-            publishedAt
-          }
-          name
-          slug
-          review
-          mainImage {
-            url
-            title
-            width
-            height
-          }
-          content{
-            json
-          }
-          documentsCollection {
-            items {
-              title
-              description
-              fileName
-              size
-              url
-            }
-          }
-          party
-          facebookLink
+      items {
+        sys {
+          id
+          publishedAt
         }
+        name
+        slug
+        review
+        mainImage {
+          url
+          title
+          width
+          height
+        }
+        content{
+          json
+        }
+        documentsCollection {
+          items {
+            title
+            description
+            fileName
+            size
+            url
+          }
+        }
+        party
+        facebookLink
       }
     }
   }
-  query MoreProjects($slug: String!, $limit: Int!) {
-    projectCollection(
+  query MoreCandidates($slug: String!, $limit: Int!) {
+    candidateCollection(
       where: { slug_not_in: [$slug] }
       order: sys_publishedAt_DESC
       limit: $limit

@@ -40,11 +40,14 @@ export function Nav() {
     setShow("");
   }, [activeRoute]);
   return (
-    <div className="relative bg-white dark:bg-gray-800">
-      <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
+    <div className="sticky top-0 z-10 bg-white shadow-sm dark:bg-gray-800">
+      <div className="flex shadow-md justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
-          <Link href="#">
-            <h1 className="font-thin text-3xl dark:text-white">Nu tot ei</h1>
+          <Link href="/">
+            <h1 className="text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer">
+              <span className="inline">Nu </span>
+              <span className="text-red-600 inline">tot ei</span>
+            </h1>
           </Link>
         </div>
         <div className="-mr-2 -my-2 md:hidden">
@@ -54,7 +57,6 @@ export function Nav() {
             className="bg-white dark:bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-white dark:hover:text-gray-100 hover:text-gray-500 dark:hover:bg-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-100"
           >
             <span className="sr-only">Open menu</span>
-            {/*Heroicon name: menu */}
             <svg
               className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +124,7 @@ export function Nav() {
                   ref={ref}
                   onMouseEnter={() => setShow("partide")}
                   onMouseLeave={() => setShow("")}
-                  className="absolute left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0"
+                  className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0"
                 >
                   <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div className="z-20 relative grid gap-6  bg-white dark:bg-gray-800 px-5 py-6 sm:gap-8 sm:p-8">
@@ -207,9 +209,9 @@ export function Nav() {
         {(ref) => (
           <div
             ref={ref}
-            className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+            className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
           >
-            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+            <div className="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
               <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <div>

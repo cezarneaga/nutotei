@@ -35,58 +35,58 @@ export async function fetchGraphQL(
 
   return json;
 }
-export function extractProject(fetchResponse: { data: any }) {
-  return fetchResponse?.data?.projectCollection?.items?.[0] || null;
+export function extractCandidate(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.candidateCollection?.items?.[0] || null;
 }
 
-export function extractProjectEntries(fetchResponse: { data: any }) {
-  return fetchResponse?.data?.projectCollection?.items || [];
+export function extractCandidateEntries(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.candidateCollection?.items || [];
 }
 
-export async function getProjects(limit: number, preview: boolean) {
+export async function getCandidates(limit: number, preview: boolean) {
   const entries = await fetchGraphQL(
     operationsDoc,
-    "ProjectList",
+    "CandidateList",
     { limit },
     preview
   );
-  return extractProjectEntries(entries);
+  return extractCandidateEntries(entries);
 }
-export async function getProjectBySlug(
+export async function getCandidateBySlug(
   slug: string,
   limit: number,
   preview: boolean
 ) {
   const entry = await fetchGraphQL(
     operationsDoc,
-    "ProjectBySlug",
+    "CandidateBySlug",
     { slug, preview },
     preview
   );
   const entries = await fetchGraphQL(
     operationsDoc,
-    "MoreProjects",
+    "MoreCandidates",
     { slug, limit },
     preview
   );
   return {
-    project: extractProject(entry),
-    moreProjects: extractProjectEntries(entries),
+    project: extractCandidate(entry),
+    moreProjects: extractCandidateEntries(entries),
   };
 }
-export async function getAllProjectsWithSlugs() {
-  const entries = await fetchGraphQL(operationsDoc, "AllProjectsWithSlugs");
-  return extractProjectEntries(entries);
+export async function getAllCandidatesWithSlugs() {
+  const entries = await fetchGraphQL(operationsDoc, "AllCandidatesWithSlugs");
+  return extractCandidateEntries(entries);
 }
 export async function getPreviewProjectBySlug(slug: string) {
   const entry = await fetchGraphQL(
     operationsDoc,
-    "ProjectBySlug",
+    "CandidateBySlug",
     {
       slug,
       preview: true,
     },
     true
   );
-  return extractProject(entry);
+  return extractCandidate(entry);
 }

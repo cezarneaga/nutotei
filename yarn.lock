@@ -159,6 +159,11 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-10.0.2.tgz#a9a3daa55385749cd62fb57d4423ca27ae5f4e81"
   integrity sha512-ILc5/BipD7+GBLmtfnQDMG71KLx0fEpVI5kJw8jN9SoeygMrb4auZhCl7gA6QP3oynocYouJ8piLj1Ol80ZvVw==
 
+"@tailwindcss/aspect-ratio@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.2.0.tgz#bebd32b7d0756b695294d4db1ae658796ff72a2c"
+  integrity sha512-v5LyHkwXj/4lI74B06zUrmWEdmSqS43+jw717pkt3fAXqb7ALwu77A8t7j+Bej+ZbdlIIqNMYheGN7wSGV1A6w==
+
 "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"

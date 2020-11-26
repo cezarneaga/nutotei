@@ -1,13 +1,29 @@
 import Layout from "components/layout";
-
-export default function IndexPage({ preview }) {
+import { Hero } from "components/hero";
+import { Latest } from "components/latest";
+import { getCandidates } from "../lib/api";
+import { Candidate } from "../lib/contentTypes";
+export default function IndexPage({
+  preview,
+  latestCandidates,
+}: {
+  preview: boolean;
+  latestCandidates: Candidate[];
+}) {
   return (
     <Layout preview={preview}>
-      <div className="py-20">
-        <h1 className="text-5xl text-center text-gray-700 dark:text-gray-100">
-          Next.js + Tailwind CSS 2.0
-        </h1>
-      </div>
+      <Hero />
+      <Latest candidates={latestCandidates} />
     </Layout>
   );
+}
+
+export async function getStaticProps({ preview = false }) {
+  const latestCandidates = await getCandidates(4, preview);
+  return {
+    props: {
+      preview,
+      latestCandidates,
+    },
+  };
 }
