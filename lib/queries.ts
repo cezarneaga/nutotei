@@ -72,17 +72,21 @@ export const operationsDoc = `
     }
   }
   query CandidatesByParty($party: String!, $limit: Int!) {
-    candidateCollection(where: {party: $party}, order: sys_publishedAt_DESC, limit: $limit) {
+    candidateCollection(where: { party: $party }, order: sys_publishedAt_DESC, limit: $limit) {
       items {
         sys {
           id
-          publishedAt
         }
         name
         slug
         review
         ...imageUrl
       }
+    }
+  }
+  query CandidatesTotalByParty($party: String!) {
+    candidateCollection(where: {party: $party}, limit:4) {
+      total
     }
   }
 

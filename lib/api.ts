@@ -1,8 +1,20 @@
 import { operationsDoc } from "lib/queries";
+import { GraphQLClient } from "graphql-request";
+
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 const previewToken = process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+export const swrFetcher = async (query: string) => {
+  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${space}`;
 
+  const graphQLClient = new GraphQLClient(endpoint, {
+    headers: {
+      authorization: `Bearer ${publicToken}`,
+    },
+  });
+  const data = await graphQLClient.request(query);
+  return await data.candidateCollection.items;
+};
 export async function fetchGraphQL(
   query: string,
   operationName: string,
@@ -65,6 +77,14 @@ export async function getCandidatesByParty(
   );
   return extractCandidateEntries(entries);
 }
+export async function getCandidatesTotalByParty(party: string) {
+  const { data } = await fetchGraphQL(operationsDoc, "CandidatesTotalByParty", {
+    party,
+  });
+
+  return data?.candidateCollection?.total || 0;
+}
+
 export async function getCandidateBySlug(
   slug: string,
   limit: number,
