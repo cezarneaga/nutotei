@@ -107,6 +107,24 @@ export const operationsDoc = `
       }
     }
   }
+  query PageQuery($slug: String!) {
+    page: pageCollection(where: {slug: $slug}, limit: 1) {
+      items {
+        slug
+        photo {
+          url
+          title
+          width
+          height
+        }
+        content {
+          json
+        }
+        subtitle
+        title
+      }
+    }
+  }
   fragment imageUrl on Candidate {
     mainImage {
       url

@@ -55,6 +55,16 @@ export function extractCandidateEntries(fetchResponse: { data: any }) {
   return fetchResponse?.data?.candidateCollection?.items || [];
 }
 
+export async function getPage(slug: string, preview: boolean) {
+  const { data } = await fetchGraphQL(
+    operationsDoc,
+    "PageQuery",
+    { slug },
+    preview
+  );
+
+  return data?.page.items[0];
+}
 export async function getCandidates(limit: number, preview: boolean) {
   const entries = await fetchGraphQL(
     operationsDoc,
