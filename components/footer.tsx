@@ -6,7 +6,7 @@ export function Footer() {
         <div className="flex justify-center space-x-6 md:order-2">
           <a
             href="https://facebook.com/valeriu.nicolae.39"
-            className="text-gray-400 hover:text-gray-500"
+            className="text-gray-700 hover:text-gray-500"
           >
             <span className="sr-only">Facebook</span>
             <svg
@@ -24,7 +24,7 @@ export function Footer() {
           </a>
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-400">
+          <p className="text-center text-base text-gray-700">
             &copy; {year} Valeriu Nicolae
           </p>
         </div>
