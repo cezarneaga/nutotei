@@ -21,3 +21,6 @@ body {
 /* Stop purging. */
 
 /* Your own custom utilities */
+/*! purgecss start ignore */
+@import "search.css";
+/*! purgecss end ignore */

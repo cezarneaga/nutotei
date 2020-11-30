@@ -13,6 +13,7 @@
     "@headlessui/react": "^0.2.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/typography": "^0.3.1",
+    "algoliasearch": "^4.8.2",
     "graphql": "^15.4.0",
     "graphql-request": "^3.3.0",
     "next": "latest",
@@ -21,6 +22,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.9",
+    "react-instantsearch-dom": "^6.8.2",
     "swr": "^0.3.9"
   },
   "devDependencies": {

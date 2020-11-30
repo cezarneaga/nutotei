@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import Layout from "components/layout";
 import { Hero } from "components/hero";
 import { Latest } from "components/latest";
@@ -23,6 +24,16 @@ export default function IndexPage({
 }) {
   return (
     <Layout preview={preview}>
+      <NextSeo
+        title={`Nu tot ei! - Valeriu Nicolae`}
+        description={`Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`}
+        canonical={`https://nutotei.ro`}
+        openGraph={{
+          url: `https://nutotei.ro`,
+          title: `Nu tot ei! - Valeriu Nicolae`,
+          description: `Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`,
+        }}
+      />
       <Hero />
       <Latest candidates={latestCandidates} />
       <LatestParty candidates={psdCandidates} slug="psd" />
