@@ -164,7 +164,7 @@ export default function Candidat({
                               href={cv.url}
                               target="_blank"
                               rel="noreferrer noopener"
-                              className="mt-4 text-red-400 flex hover:text-red-500 cursor-pointer clickable h-4"
+                              className="mt-4 text-red-700 flex hover:text-red-800 cursor-pointer clickable h-4"
                               title={`Sursa CV - ${cv.title}`}
                             >
                               <svg
