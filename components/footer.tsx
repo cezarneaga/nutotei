@@ -32,11 +32,12 @@ export function Footer() {
           <p className="text-center text-base text-gray-700">
             dezvoltat de{" "}
             <a
-              className="text-blue-600 font-bold"
+              className="font-bold"
               href="https://constnext.com"
               target="_blank"
               title="constNEXT"
               rel="noopener noreferrer"
+              style={{ color: "#4278b3" }}
             >
               constNEXT
             </a>
