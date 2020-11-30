@@ -28,6 +28,20 @@ export function Footer() {
             &copy; {year} Valeriu Nicolae
           </p>
         </div>
+        <div className="mt-8 md:mt-0 md:order-2">
+          <p className="text-center text-base text-gray-700">
+            dezvoltat de{" "}
+            <a
+              className="text-blue-600 font-bold"
+              href="https://constnext.com"
+              target="_blank"
+              title="constNEXT"
+              rel="noopener noreferrer"
+            >
+              constNEXT
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
