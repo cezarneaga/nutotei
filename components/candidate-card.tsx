@@ -12,8 +12,8 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
                 className="rounded-full object-cover"
                 src={candidate.mainImage.url}
                 alt={candidate.mainImage.title}
-                width={300}
-                height={300}
+                width={80}
+                height={80}
               />
             </a>
           </Link>
