@@ -78,7 +78,7 @@ export async function getCandidatesByCounty(county: string, preview: boolean) {
   const entries = await fetchGraphQL(
     operationsDoc,
     "CandidateList",
-    { preview, limit: 200 },
+    { preview, limit: 10 },
     preview
   )
   return extractCandidateEntries(entries)
