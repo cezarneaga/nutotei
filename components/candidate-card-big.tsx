@@ -4,42 +4,28 @@ import Link from "next/link";
 import { Facebook } from "react-feather";
 import { Candidate } from "lib/contentTypes";
 export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
-  useEffect(() => {
-    const card = document.querySelector(".card-big");
-    const mainLink = card.querySelector(".candidate-detail");
-    const clickableElements = Array.from(card.querySelectorAll(".clickable"));
-    clickableElements.forEach((ele) =>
-      ele.addEventListener("click", (e) => e.stopPropagation())
-    );
-    function handleClick(event) {
-      const noTextSelected = !window.getSelection().toString();
-
-      if (noTextSelected) {
-        // @ts-ignore
-        mainLink.firstElementChild.click();
-      }
-    }
-    card.addEventListener("click", handleClick);
-    return () => {
-      card.removeEventListener("click", handleClick);
-    };
-  });
   return (
     <li className="card-big cursor-pointer">
       <div className="space-y-4">
         <div className="">
-          <Image
-            className="object-cover shadow-lg rounded-lg"
-            src={candidate.mainImage.url}
-            alt={candidate.mainImage.title}
-            width={384}
-            height={256}
-            layout="responsive"
-          />
+          <Link href={`/candidat/${candidate.slug}`}>
+            <a title={candidate.name}>
+              <Image
+                className="object-cover shadow-lg rounded-lg"
+                src={candidate.mainImage.url}
+                alt={candidate.mainImage.title}
+                width={384}
+                height={256}
+                layout="responsive"
+              />
+            </a>
+          </Link>
         </div>
         <div className="text-lg leading-6 font-medium space-y-1">
           <h3 className="candidate-detail">
-            <Link href={`/candidat/${candidate.slug}`}>{candidate.name}</Link>
+            <Link href={`/candidat/${candidate.slug}`}>
+              <a title={candidate.name}>{candidate.name}</a>
+            </Link>
           </h3>
           <p className="text-red-600">{candidate.party}</p>
         </div>

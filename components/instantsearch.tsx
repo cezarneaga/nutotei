@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import algoliasearch from "algoliasearch/lite";
 import { Transition } from "@headlessui/react";
 
@@ -21,10 +21,17 @@ const searchClient = algoliasearch(appId, searchKey);
 
 export function Search() {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    const searchInput = document.querySelector(".ais-SearchBox-input");
+    searchInput.setAttribute("aria-labelledby", "search");
+  });
 
   return (
     <InstantSearch indexName={indexName} searchClient={searchClient}>
       <div className="group md:leading-6 md:ml-20 font-medium flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200">
+        <div className="sr-only" id="search">
+          Caută candidați
+        </div>
         <SearchBox
           onChange={() => setIsOpen(true)}
           translations={{
