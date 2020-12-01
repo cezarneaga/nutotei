@@ -65,11 +65,10 @@ export function Nav() {
             <div className="relative">
               <button
                 type="button"
-                className={`group bg-white dark:bg-gray-800 rounded-md ${
-                  activeRoute === "/partide/[:slug]"
+                className={`group bg-white dark:bg-gray-800 rounded-md ${activeRoute === "/partide/[:slug]"
                     ? "text-gray-900 dark:text-white"
                     : "text-gray-500 dark:text-gray-200"
-                } inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-100`}
+                  } inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-100`}
                 onClick={() =>
                   setShow((s) => (s === "partide" ? "" : "partide"))
                 }
@@ -82,11 +81,10 @@ export function Nav() {
               >
                 <span className="">Partide</span>
                 <svg
-                  className={`ml-2 h-5 w-5 ${
-                    activeRoute === "/partide/[:slug]"
+                  className={`ml-2 h-5 w-5 ${activeRoute === "/partide/[:slug]"
                       ? "text-gray-600 dark:text-white"
                       : "text-gray-400 dark:text-gray-600"
-                  } group-hover:text-gray-500 dark:group-hover:text-gray-100`}
+                    } group-hover:text-gray-500 dark:group-hover:text-gray-100`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -149,13 +147,22 @@ export function Nav() {
 
             <Link href="/despre">
               <span
-                className={`text-base cursor-pointer font-medium ${
-                  activeRoute === "/despre"
-                    ? "text-gray-900 dark:text-white"
-                    : "text-gray-500 dark:text-gray-200"
-                } hover:text-gray-900 dark:hover:text-gray-100`}
+                className={`text-base cursor-pointer font-medium ${activeRoute === "/despre"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-500 dark:text-gray-200"
+                  } hover:text-gray-900 dark:hover:text-gray-100`}
               >
                 Despre
+              </span>
+            </Link>
+            <Link href="/harta">
+              <span
+                className={`text-base cursor-pointer font-medium ${activeRoute === "/harta"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-500 dark:text-gray-200"
+                  } hover:text-gray-900 dark:hover:text-gray-100`}
+              >
+                Harta
               </span>
             </Link>
           </nav>
@@ -182,9 +189,8 @@ export function Nav() {
               <div className="rounded-lg shadow-xl h-full ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div
-                    className={`${
-                      showNav ? "" : "hidden"
-                    } md:flex items-center justify-end md:flex-1 lg:w-0`}
+                    className={`${showNav ? "" : "hidden"
+                      } md:flex items-center justify-end md:flex-1 lg:w-0`}
                   >
                     <Search />
                   </div>

@@ -1,20 +1,20 @@
-import { operationsDoc } from "lib/queries";
-import { GraphQLClient } from "graphql-request";
+import { operationsDoc } from "lib/queries"
+import { GraphQLClient } from "graphql-request"
 
-const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
-const previewToken = process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN;
+const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
+const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+const previewToken = process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
 export const swrFetcher = async (query: string) => {
-  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${space}`;
+  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${space}`
 
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
       authorization: `Bearer ${publicToken}`,
     },
-  });
-  const data = await graphQLClient.request(query);
-  return await data.candidateCollection.items;
-};
+  })
+  const data = await graphQLClient.request(query)
+  return await data.candidateCollection.items
+}
 export async function fetchGraphQL(
   query: string,
   operationName: string,
@@ -35,24 +35,24 @@ export async function fetchGraphQL(
         operationName: operationName,
       }),
     }
-  );
-  const json = await result.json();
+  )
+  const json = await result.json()
 
   if (!!json.errors) {
     console.warn(
       `Errors in GraphQL query ${operationName}:`,
       json.errors.map((m: any) => m.message)
-    );
+    )
   }
 
-  return json;
+  return json
 }
 export function extractCandidate(fetchResponse: { data: any }) {
-  return fetchResponse?.data?.candidateCollection?.items?.[0] || null;
+  return fetchResponse?.data?.candidateCollection?.items?.[0] || null
 }
 
 export function extractCandidateEntries(fetchResponse: { data: any }) {
-  return fetchResponse?.data?.candidateCollection?.items || [];
+  return fetchResponse?.data?.candidateCollection?.items || []
 }
 
 export async function getPage(slug: string, preview: boolean) {
@@ -61,9 +61,9 @@ export async function getPage(slug: string, preview: boolean) {
     "PageQuery",
     { slug },
     preview
-  );
+  )
 
-  return data?.page.items[0];
+  return data?.page.items[0]
 }
 export async function getCandidates(limit: number, preview: boolean) {
   const entries = await fetchGraphQL(
@@ -71,9 +71,19 @@ export async function getCandidates(limit: number, preview: boolean) {
     "CandidateList",
     { limit },
     preview
-  );
-  return extractCandidateEntries(entries);
+  )
+  return extractCandidateEntries(entries)
 }
+export async function getCandidatesByCounty(county: string, preview: boolean) {
+  const entries = await fetchGraphQL(
+    operationsDoc,
+    "CandidateList",
+    { preview, limit: 200 },
+    preview
+  )
+  return extractCandidateEntries(entries)
+}
+
 export async function getCandidatesByParty(
   party: string,
   limit: number,
@@ -84,15 +94,15 @@ export async function getCandidatesByParty(
     "CandidatesByParty",
     { party, limit, preview },
     preview
-  );
-  return extractCandidateEntries(entries);
+  )
+  return extractCandidateEntries(entries)
 }
 export async function getCandidatesTotalByParty(party: string) {
   const { data } = await fetchGraphQL(operationsDoc, "CandidatesTotalByParty", {
     party,
-  });
+  })
 
-  return data?.candidateCollection?.total || 0;
+  return data?.candidateCollection?.total || 0
 }
 
 export async function getCandidateBySlug(
@@ -105,21 +115,21 @@ export async function getCandidateBySlug(
     "CandidateBySlug",
     { slug, preview },
     preview
-  );
+  )
   const entries = await fetchGraphQL(
     operationsDoc,
     "MoreCandidates",
     { slug, limit },
     preview
-  );
+  )
   return {
     candidate: extractCandidate(entry),
     moreCandidates: extractCandidateEntries(entries),
-  };
+  }
 }
 export async function getAllCandidatesWithSlugs() {
-  const entries = await fetchGraphQL(operationsDoc, "AllCandidatesWithSlugs");
-  return extractCandidateEntries(entries);
+  const entries = await fetchGraphQL(operationsDoc, "AllCandidatesWithSlugs")
+  return extractCandidateEntries(entries)
 }
 export async function getPreviewProjectBySlug(slug: string) {
   const entry = await fetchGraphQL(
@@ -130,6 +140,6 @@ export async function getPreviewProjectBySlug(slug: string) {
       preview: true,
     },
     true
-  );
-  return extractCandidate(entry);
+  )
+  return extractCandidate(entry)
 }
