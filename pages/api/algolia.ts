@@ -26,6 +26,7 @@ const algoliaHandler = async (req, res) => {
       },
       party: fields.party.ro,
       county,
+      updatedAt,
     };
     // @ts-ignore
     await index.saveObject({ objectID, ...object });
