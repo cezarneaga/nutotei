@@ -3,7 +3,7 @@ import { Image, RichText } from "./generic";
 export interface Candidate {
   sys: {
     id: string;
-    publishedAt: string;
+    firstPublishedAt: string;
   };
   name: string;
   slug: string;

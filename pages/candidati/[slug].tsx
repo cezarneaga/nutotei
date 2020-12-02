@@ -37,13 +37,13 @@ export default function Candidat({
   const { data, error, size, setSize } = useSWRInfinite((index) => {
     return `{candidateCollection(where: {party: "${
       category.partyShort
-    }"}, order: sys_publishedAt_DESC, limit: ${limit}, skip: ${
+    }"}, order: sys_firstPublishedAt_DESC, limit: ${limit}, skip: ${
       index * limit + 6
     }) {
         items {
           sys {
             id
-            publishedAt
+            firstPublishedAt
           }
           name
           slug
