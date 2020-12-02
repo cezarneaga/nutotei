@@ -47,6 +47,9 @@ export async function fetchGraphQL(
 
   return json;
 }
+export function extractCounty(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.county?.items?.[0] || null;
+}
 export function extractCandidate(fetchResponse: { data: any }) {
   return fetchResponse?.data?.candidateCollection?.items?.[0] || null;
 }
@@ -132,4 +135,9 @@ export async function getPreviewProjectBySlug(slug: string) {
     true
   );
   return extractCandidate(entry);
+}
+export async function getCountyById(id: string) {
+  const entry = await fetchGraphQL(operationsDoc, "County", { id }, true);
+
+  return extractCounty(entry);
 }
