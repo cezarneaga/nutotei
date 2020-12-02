@@ -1,10 +1,10 @@
 export const operationsDoc = `
   query CandidateList($limit: Int!) {
-    candidateCollection(limit: $limit,order:sys_publishedAt_DESC) {
+    candidateCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
       items {
         sys {
           id
-          publishedAt
+          firstPublishedAt
         }
         name
         slug
@@ -29,7 +29,7 @@ export const operationsDoc = `
       items {
         sys {
           id
-          publishedAt
+          firstPublishedAt
         }
         name
         slug
@@ -55,13 +55,13 @@ export const operationsDoc = `
   query MoreCandidates($slug: String!, $limit: Int!) {
     candidateCollection(
       where: { slug_not_in: [$slug] }
-      order: sys_publishedAt_DESC
+      order: sys_firstPublishedAt_DESC
       limit: $limit
     ) {
       items {
         sys {
           id
-          publishedAt
+          firstPublishedAt
         }
         name
         slug
@@ -72,7 +72,7 @@ export const operationsDoc = `
     }
   }
   query CandidatesByParty($party: String!, $limit: Int!) {
-    candidateCollection(where: { party: $party }, order: sys_publishedAt_DESC, limit: $limit) {
+    candidateCollection(where: { party: $party }, order: sys_firstPublishedAt_DESC, limit: $limit) {
       items {
         sys {
           id
@@ -93,7 +93,7 @@ export const operationsDoc = `
   query AllCandidatesWithSlugs {
     candidateCollection(
       where: { slug_exists: true }
-      order: sys_publishedAt_DESC
+      order: sys_firstPublishedAt_DESC
     ) {
       items {
         slug
