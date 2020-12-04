@@ -10,7 +10,7 @@
 @screen lg {
 } */
 .ais-PoweredBy-text {
-  font-size: x-small;
+  @apply text-xs;
 }
 .ais-PoweredBy-logo {
   height: 20px !important;
@@ -31,9 +31,18 @@
 }
 .ais-Hits-item {
   background-color: theme("colors.white");
-  padding: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
-
+.ais-MenuSelect {
+  @apply flex-1 border rounded border-gray-300 p-2;
+}
+.ais-MenuSelect:nth-child(1) {
+  @apply mr-4;
+}
+.ais-MenuSelect-select {
+  @apply w-full;
+}
 /* .ais-Hits-item:nth-child(odd) {
   background-color: theme("colors.gray.100");
 } */

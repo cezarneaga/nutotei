@@ -8,10 +8,12 @@ import {
   SearchBox,
   Configure,
   Hits,
+  MenuSelect,
   PoweredBy,
   Highlight,
 } from "react-instantsearch-dom";
 import { ArrowRightCircle } from "react-feather";
+import { LatestCounty } from "./latest-county";
 
 const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME;
 const searchKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY;
@@ -95,12 +97,27 @@ export function Search() {
                       </div>
                     </div>
                     <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                      {/* <!-- Replace with your content --> */}
                       <div className="absolute inset-0 px-4 sm:px-6">
                         <Configure hitsPerPage={6} />
+                        <div className="text-xs">filtre</div>
+                        <div className="flex">
+                          <MenuSelect
+                            attribute={"county.label"}
+                            limit={42}
+                            translations={{
+                              seeAllOption: "Toate județele",
+                            }}
+                          />
+                          <MenuSelect
+                            attribute={"party"}
+                            limit={10}
+                            translations={{
+                              seeAllOption: "Toate partidele",
+                            }}
+                          />
+                        </div>
                         <Hits hitComponent={Hit} />
                       </div>
-                      {/* <!-- /End replace --> */}
                     </div>
                   </div>
                 </div>
