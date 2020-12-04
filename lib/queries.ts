@@ -144,6 +144,15 @@ export const operationsDoc = `
       }
     }
   }
+  query County($id: String!) {
+    county: countyCollection(where: {sys: {id: $id}}, limit: 1) {
+      items {
+        slug
+        value
+        label
+      }
+    }
+  }
   fragment imageUrl on Candidate {
     mainImage {
       url

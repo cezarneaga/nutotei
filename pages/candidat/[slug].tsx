@@ -58,8 +58,8 @@ export default function Candidat({
             url={`https://nutotei.ro/candidat/${candidate?.slug}`}
             title={candidate?.name}
             images={[candidate?.mainImage.url]}
-            datePublished={candidate?.sys.publishedAt}
-            dateModified={candidate?.sys.publishedAt}
+            datePublished={candidate?.sys.firstPublishedAt}
+            dateModified={candidate?.sys.firstPublishedAt}
             authorName={["Valeriu Nicolae"]}
             publisherName="Valeriu Nicolae"
             publisherLogo=""
