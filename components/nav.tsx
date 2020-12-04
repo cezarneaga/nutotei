@@ -144,17 +144,6 @@ export function Nav() {
                 )}
               </Transition>
             </div>
-
-            <Link href="/despre">
-              <span
-                className={`text-base cursor-pointer font-medium ${activeRoute === "/despre"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-200"
-                  } hover:text-gray-900 dark:hover:text-gray-100`}
-              >
-                Despre
-              </span>
-            </Link>
             <Link href="/harta/bucuresti">
               <span
                 className={`text-base cursor-pointer font-medium ${activeRoute === "/harta/[:slug]"
@@ -165,6 +154,17 @@ export function Nav() {
                 Harta
               </span>
             </Link>
+            <Link href="/despre">
+              <span
+                className={`text-base cursor-pointer font-medium ${activeRoute === "/despre"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-500 dark:text-gray-200"
+                  } hover:text-gray-900 dark:hover:text-gray-100`}
+              >
+                Despre
+              </span>
+            </Link>
+
           </nav>
           <div
             className={`hidden md:flex items-center justify-end md:flex-1 lg:w-0`}
@@ -228,7 +228,13 @@ export function Nav() {
                 </div>
 
                 <div className="py-6 px-5">
-                  <div className="grid grid-cols-3 gap-4 justify-items-center">
+                  <div className="grid grid-cols-4 gap-4 justify-items-center">
+                    <a
+                      href="/harta/bucuresti"
+                      className="text-base font-medium text-gray-500 hover:text-gray-900"
+                    >
+                      Harta
+                    </a>
                     <a
                       href="/despre"
                       className="text-base font-medium text-gray-500 hover:text-gray-900"

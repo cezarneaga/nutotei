@@ -48,11 +48,13 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
   }
 
   return (data &&
-    <ReactEcharts
-      option={getChartOptions(data)}
-      style={{ height: '600px' }}
-      className="react_for_echarts"
-      onEvents={onEvents}
-    />
+    <div className="h-96 md:h-144 lg:h-150">
+      <ReactEcharts
+        option={getChartOptions(data)}
+        style={{ height: '100%' }}
+        className="react_for_echarts"
+        onEvents={onEvents}
+      />
+    </div>
   );
 }

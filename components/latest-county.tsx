@@ -8,11 +8,11 @@ export function LatestCounty({ candidates, countyName }: { candidates: Candidate
         <div className="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
           <div className="space-y-5 sm:space-y-4">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Candidați din  <span className="text-red-600 inline">{countyName}</span>
+              Politruci din  <span className="text-red-600 inline">{countyName}</span>
             </h2>
             <p className="text-xl text-gray-500">
-              Postăm în fiecare săptămână profiluri de politicieni. Timpul ne
-              omoară, că material de descoperit avem!
+              E important să știm pe cine votăm la noi acasă.
+              Chiar fiind bine intenționați, putem promova oameni pe care nu îi vrem.
             </p>
           </div>
           <div className="lg:col-span-2">
