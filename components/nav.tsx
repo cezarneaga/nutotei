@@ -66,8 +66,8 @@ export function Nav() {
               <button
                 type="button"
                 className={`group bg-white dark:bg-gray-800 rounded-md ${activeRoute === "/partide/[:slug]"
-                    ? "text-gray-900 dark:text-white"
-                    : "text-gray-500 dark:text-gray-200"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-gray-500 dark:text-gray-200"
                   } inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-100`}
                 onClick={() =>
                   setShow((s) => (s === "partide" ? "" : "partide"))
@@ -82,8 +82,8 @@ export function Nav() {
                 <span className="">Partide</span>
                 <svg
                   className={`ml-2 h-5 w-5 ${activeRoute === "/partide/[:slug]"
-                      ? "text-gray-600 dark:text-white"
-                      : "text-gray-400 dark:text-gray-600"
+                    ? "text-gray-600 dark:text-white"
+                    : "text-gray-400 dark:text-gray-600"
                     } group-hover:text-gray-500 dark:group-hover:text-gray-100`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -155,9 +155,9 @@ export function Nav() {
                 Despre
               </span>
             </Link>
-            <Link href="/harta">
+            <Link href="/harta/bucuresti">
               <span
-                className={`text-base cursor-pointer font-medium ${activeRoute === "/harta"
+                className={`text-base cursor-pointer font-medium ${activeRoute === "/harta/[:slug]"
                   ? "text-gray-900 dark:text-white"
                   : "text-gray-500 dark:text-gray-200"
                   } hover:text-gray-900 dark:hover:text-gray-100`}

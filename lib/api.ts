@@ -74,13 +74,10 @@ export async function getCandidates(limit: number, preview: boolean) {
   )
   return extractCandidateEntries(entries)
 }
-export async function getCandidatesByCounty(county: string, preview: boolean) {
-  const entries = await fetchGraphQL(
-    operationsDoc,
-    "CandidateList",
-    { preview, limit: 10 },
-    preview
-  )
+export async function getCandidatesByCounty(countyCode: string) {
+  const entries = await fetchGraphQL(operationsDoc, "CandidatesByCounty", {
+    county: countyCode,
+  })
   return extractCandidateEntries(entries)
 }
 

@@ -5,15 +5,27 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
   const getChartOptions = (data) => {
     return {
       tooltip: {
-        show: true,
+        show: false,
+        trigger: 'item',
+        formatter: (item) => {
+          return `<strong style="color:#fff">${item.data.label}</strong></br>`
+        },
       },
       series: [
         {
           name: 'Judet',
           type: 'map',
           mapType: 'RO',
+          nameProperty: 'mnemonic',
           itemStyle: {
             areaColor: '#fff',
+          },
+          label: {
+            show: true,
+            fontWeight: 'lighter',
+            fontSize: 10,
+            color: '#888'
+
           },
           emphasis: {
             label: {
