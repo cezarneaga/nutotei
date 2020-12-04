@@ -6,6 +6,10 @@ module.exports = {
       colors: {
         "accent-1": "#333",
       },
+      height: {
+        144: "36rem",
+        150: "37.5rem",
+      },
     },
   },
   variants: {
@@ -16,4 +20,4 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
   ],
-};
+}

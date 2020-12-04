@@ -71,6 +71,25 @@ export const operationsDoc = `
       }
     }
   }
+  query CandidatesByCounty($county: String!) {
+    candidateCollection( where: {county: {value: $county}} order: sys_firstPublishedAt_DESC limit: 30) {
+      items {
+        sys {
+          id
+        }
+        name
+        slug
+        review
+        party
+        ...imageUrl
+        county {
+          value
+          label
+          slug
+        }
+      }
+    }
+  }
   query CandidatesByParty($party: String!, $limit: Int!) {
     candidateCollection(where: { party: $party }, order: sys_firstPublishedAt_DESC, limit: $limit) {
       items {
@@ -142,4 +161,4 @@ export const operationsDoc = `
       height
     }
   }
-`;
+`
