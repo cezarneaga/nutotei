@@ -60,6 +60,8 @@ export default function IndexPage({
     return mapdata
   }
 
+  const { slug } = router.query
+
   return (
     <Layout preview={preview}>
       {router.isFallback ? (
@@ -69,12 +71,14 @@ export default function IndexPage({
             <NextSeo
               title={`Harta - Nu tot ei!`}
               description={`Harta pe judete`}
-              canonical={`https://nutotei.ro/harta`}
+              canonical={`https://nutotei.ro/harta/${slug}`}
               openGraph={{
-                url: `https://nutotei.ro/harta`,
+                url: `https://nutotei.ro/harta/${slug}`,
                 title: `Harta - Nu tot ei!`,
                 description: `Harta pe judete`,
+                images: [{ url: 'https://nutotei.ro/images/nutotei.png' }]
               }}
+
             />
             <div className="relative pt-6">
               <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
