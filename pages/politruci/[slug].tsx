@@ -79,9 +79,9 @@ export default function Candidat({
           <NextSeo
             title={`De la ${category.partyShort} - Nu tot ei!`}
             description={category?.party}
-            canonical={`https://nutotei.ro/candidati/${category?.slug}`}
+            canonical={`https://nutotei.ro/politruci/${category?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/candidati/${category?.slug}`,
+              url: `https://nutotei.ro/politruci/${category?.slug}`,
               title: `De la ${category?.partyShort} - Nu tot ei!`,
               description: category?.party,
               images: latest?.map((candidate) => candidate.mainImage),
@@ -183,7 +183,7 @@ export async function getStaticProps({
 
 export async function getStaticPaths() {
   return {
-    paths: parties?.map(({ slug }) => `/candidati/${slug}`),
+    paths: parties?.map(({ slug }) => `/politruci/${slug}`),
     fallback: true,
   };
 }
