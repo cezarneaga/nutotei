@@ -1,0 +1,8 @@
+{
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": true,
+  "packageManager": "yarn",
+  "printWidth": 130,
+  "semi": false,
+  "singleQuote": true
+}
