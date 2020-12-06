@@ -1,15 +1,15 @@
-import { ArticleJsonLd, NextSeo } from "next-seo";
-import Head from "next/head";
-import Image from "next/image";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import Layout from "components/layout";
+import { ArticleJsonLd, NextSeo } from 'next-seo';
+import Head from 'next/head';
+import Image from 'next/image';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
+import Layout from 'components/layout';
 
-import { getCandidateBySlug, getAllCandidatesWithSlugs } from "lib/api";
-import { Candidate } from "../../lib/contentTypes";
-import { Facebook } from "react-feather";
+import { getCandidateBySlug, getAllCandidatesWithSlugs } from 'lib/api';
+import { Candidate } from '../../lib/contentTypes';
+import { Facebook } from 'react-feather';
 type Props = {
   candidate: Candidate;
   moreCandidates: Candidate[];
@@ -60,7 +60,7 @@ export default function Candidat({
             images={[candidate?.mainImage.url]}
             datePublished={candidate?.sys.firstPublishedAt}
             dateModified={candidate?.sys.firstPublishedAt}
-            authorName={["Valeriu Nicolae"]}
+            authorName={['Valeriu Nicolae']}
             publisherName="Valeriu Nicolae"
             publisherLogo=""
             description={candidate?.review}
@@ -252,7 +252,7 @@ export async function getStaticProps({
 export async function getStaticPaths() {
   const allCandidates: Candidate[] = await getAllCandidatesWithSlugs();
   return {
-    paths: allCandidates?.map(({ slug }) => `/candidat/${slug}`),
+    paths: allCandidates?.map(({ slug }) => `/politruc/${slug}`),
     fallback: true,
   };
 }
