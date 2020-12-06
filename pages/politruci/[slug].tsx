@@ -1,19 +1,19 @@
-import { NextSeo } from "next-seo";
-import { splitAt } from "ramda";
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-import { useSWRInfinite } from "swr";
-import Layout from "components/layout";
-import { Latest } from "components/latest";
-import { CandidateCard } from "components/candidate-card";
-import { CategoryHeader } from "components/category-header";
+import { NextSeo } from 'next-seo';
+import { splitAt } from 'ramda';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
+import { useSWRInfinite } from 'swr';
+import Layout from 'components/layout';
+import { Latest } from 'components/latest';
+import { CandidateCard } from 'components/candidate-card';
+import { CategoryHeader } from 'components/category-header';
 import {
   getCandidatesByParty,
   swrFetcher,
   getCandidatesTotalByParty,
-} from "lib/api";
-import { Candidate } from "lib/contentTypes";
-import { parties, Party } from "lib/parties";
+} from 'lib/api';
+import { Candidate } from 'lib/contentTypes';
+import { parties, Party } from 'lib/parties';
 type Props = {
   latest: Candidate[];
   older: Candidate[];
@@ -60,10 +60,10 @@ export default function Candidat({
   }, swrFetcher);
 
   const isLoadingInitialData = !data && !error;
-  const isSSR = typeof window === "undefined";
+  const isSSR = typeof window === 'undefined';
   const isLoadingMore = !isSSR
     ? isLoadingInitialData ||
-      (size > 0 && data && typeof data[size - 1] === "undefined")
+      (size > 0 && data && typeof data[size - 1] === 'undefined')
     : false;
   const candidates = data ? [].concat(...data) : [];
   const isEmpty = data?.length === 0;
@@ -79,9 +79,9 @@ export default function Candidat({
           <NextSeo
             title={`De la ${category.partyShort} - Nu tot ei!`}
             description={category?.party}
-            canonical={`https://nutotei.ro/candidati/${category?.slug}`}
+            canonical={`https://nutotei.ro/politruci/${category?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/candidati/${category?.slug}`,
+              url: `https://nutotei.ro/politruci/${category?.slug}`,
               title: `De la ${category?.partyShort} - Nu tot ei!`,
               description: category?.party,
               images: latest?.map((candidate) => candidate.mainImage),
@@ -129,19 +129,19 @@ export default function Candidat({
                     <button
                       className="mt-12 w-full md:w-auto md:mx-auto flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-red-600 border-red-600 hover:bg-gray-100 md:py-2 md:text-lg md:px-4"
                       disabled={
-                        typeof window !== "undefined"
+                        typeof window !== 'undefined'
                           ? isLoadingMore || isReachingEnd
                           : true
                       }
                       onClick={() => setSize(size + 1)}
                     >
-                      {typeof window !== "undefined"
+                      {typeof window !== 'undefined'
                         ? isLoadingMore
-                          ? "se încarcă..."
+                          ? 'se încarcă...'
                           : isReachingEnd
-                          ? "cam atât deocamdată"
-                          : "mai mulți"
-                        : "se încarcă..."}
+                          ? 'cam atât deocamdată'
+                          : 'mai mulți'
+                        : 'se încarcă...'}
                     </button>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export async function getStaticProps({
 
 export async function getStaticPaths() {
   return {
-    paths: parties?.map(({ slug }) => `/candidati/${slug}`),
+    paths: parties?.map(({ slug }) => `/politruci/${slug}`),
     fallback: true,
   };
 }

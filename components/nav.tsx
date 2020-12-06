@@ -1,22 +1,22 @@
-import Link from "next/link";
-import Image from "next/image";
-import Head from "next/head";
+import Link from 'next/link';
+import Image from 'next/image';
+import Head from 'next/head';
 
-import { useState, useCallback, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useState, useCallback, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-import { Transition } from "@headlessui/react";
-import { Facebook, Mail } from "react-feather";
-import { parties } from "lib/parties";
-import { Search } from "components/instantsearch";
+import { Transition } from '@headlessui/react';
+import { Facebook, Mail } from 'react-feather';
+import { parties } from 'lib/parties';
+import { Search } from 'components/instantsearch';
 
 export function Nav() {
   const router = useRouter();
   const activeRoute = router.pathname;
-  const [show, setShow] = useState("");
+  const [show, setShow] = useState('');
   const [showNav, setShowNav] = useState(false);
   useEffect(() => {
-    setShow("");
+    setShow('');
   }, [activeRoute]);
   return (
     <>
@@ -65,26 +65,28 @@ export function Nav() {
             <div className="relative">
               <button
                 type="button"
-                className={`group bg-white dark:bg-gray-800 rounded-md ${activeRoute === "/partide/[:slug]"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-200"
-                  } inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-100`}
+                className={`group bg-white dark:bg-gray-800 rounded-md ${
+                  activeRoute === '/partide/[:slug]'
+                    ? 'text-gray-900 dark:text-white'
+                    : 'text-gray-500 dark:text-gray-200'
+                } inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-100`}
                 onClick={() =>
-                  setShow((s) => (s === "partide" ? "" : "partide"))
+                  setShow((s) => (s === 'partide' ? '' : 'partide'))
                 }
-                onMouseEnter={() => setShow("partide")}
+                onMouseEnter={() => setShow('partide')}
                 onMouseLeave={() => {
                   setTimeout(() => {
-                    () => setShow("");
+                    () => setShow('');
                   }, 200);
                 }}
               >
                 <span className="">Partide</span>
                 <svg
-                  className={`ml-2 h-5 w-5 ${activeRoute === "/partide/[:slug]"
-                    ? "text-gray-600 dark:text-white"
-                    : "text-gray-400 dark:text-gray-600"
-                    } group-hover:text-gray-500 dark:group-hover:text-gray-100`}
+                  className={`ml-2 h-5 w-5 ${
+                    activeRoute === '/partide/[:slug]'
+                      ? 'text-gray-600 dark:text-white'
+                      : 'text-gray-400 dark:text-gray-600'
+                  } group-hover:text-gray-500 dark:group-hover:text-gray-100`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -98,7 +100,7 @@ export function Nav() {
                 </svg>
               </button>
               <Transition
-                show={show === "partide"}
+                show={show === 'partide'}
                 enter="transition ease-out duration-200"
                 enterFrom="opacity-0 translate-y-1"
                 enterTo="opacity-100 translate-y-0"
@@ -109,8 +111,8 @@ export function Nav() {
                 {(ref) => (
                   <div
                     ref={ref}
-                    onMouseEnter={() => setShow("partide")}
-                    onMouseLeave={() => setShow("")}
+                    onMouseEnter={() => setShow('partide')}
+                    onMouseLeave={() => setShow('')}
                     className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0"
                   >
                     <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
@@ -118,7 +120,7 @@ export function Nav() {
                         {parties.map((party) => (
                           <a
                             key={party.slug}
-                            href={`/candidati/${party.slug}`}
+                            href={`/politruci/${party.slug}`}
                             className="-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900"
                           >
                             <div className="flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md">
@@ -146,25 +148,26 @@ export function Nav() {
             </div>
             <Link href="/harta/bucuresti">
               <span
-                className={`text-base cursor-pointer font-medium ${activeRoute === "/harta/[:slug]"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-200"
-                  } hover:text-gray-900 dark:hover:text-gray-100`}
+                className={`text-base cursor-pointer font-medium ${
+                  activeRoute === '/harta/[:slug]'
+                    ? 'text-gray-900 dark:text-white'
+                    : 'text-gray-500 dark:text-gray-200'
+                } hover:text-gray-900 dark:hover:text-gray-100`}
               >
                 Harta
               </span>
             </Link>
             <Link href="/despre">
               <span
-                className={`text-base cursor-pointer font-medium ${activeRoute === "/despre"
-                  ? "text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-200"
-                  } hover:text-gray-900 dark:hover:text-gray-100`}
+                className={`text-base cursor-pointer font-medium ${
+                  activeRoute === '/despre'
+                    ? 'text-gray-900 dark:text-white'
+                    : 'text-gray-500 dark:text-gray-200'
+                } hover:text-gray-900 dark:hover:text-gray-100`}
               >
                 Despre
               </span>
             </Link>
-
           </nav>
           <div
             className={`hidden md:flex items-center justify-end md:flex-1 lg:w-0`}
@@ -189,8 +192,9 @@ export function Nav() {
               <div className="rounded-lg shadow-xl h-full ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div
-                    className={`${showNav ? "" : "hidden"
-                      } md:flex items-center justify-end md:flex-1 lg:w-0`}
+                    className={`${
+                      showNav ? '' : 'hidden'
+                    } md:flex items-center justify-end md:flex-1 lg:w-0`}
                   >
                     <Search />
                   </div>
@@ -208,7 +212,7 @@ export function Nav() {
                       {parties.map((party) => (
                         <a
                           key={party.slug}
-                          href={`/candidati/${party.slug}`}
+                          href={`/politruci/${party.slug}`}
                           className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
                         >
                           <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-red-500 text-white">

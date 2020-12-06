@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Facebook } from "react-feather";
-import { Candidate } from "lib/contentTypes";
+import { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Facebook } from 'react-feather';
+import { Candidate } from 'lib/contentTypes';
 export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
   return (
     <li className="card-big cursor-pointer">
