@@ -1,14 +1,16 @@
 import algoliasearch from 'algoliasearch/lite'
+import { NextApiResponse, NextApiRequest } from 'next'
+
 import { getCountyById } from 'lib/api'
-const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME
-const searchKey = process.env.ALGOLIA_API_KEY
-const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID
+const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME!
+const searchKey = process.env.ALGOLIA_API_KEY!
+const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!
 
 const client = algoliasearch(appId, searchKey)
 
-const algoliaHandler = async (req, res) => {
+const algoliaHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const index = client.initIndex(indexName)
-  const eventType = req.headers['x-contentful-topic'].split('.')[2]
+  const eventType = (req.headers['x-contentful-topic'] as string)?.split('.')[2]
 
   const { sys, fields } = req.body
 

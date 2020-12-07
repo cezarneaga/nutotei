@@ -1,8 +1,10 @@
 import { ArticleJsonLd, NextSeo } from 'next-seo'
+import { ReactNode } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { BLOCKS, MARKS, Block, Inline } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Layout from 'components/layout'
@@ -16,15 +18,15 @@ type Props = {
   preview: boolean
 }
 
-const Bold = ({ children }) => <strong>{children}</strong>
-const Text = ({ children }) => <p>{children}</p>
+const Bold = ({ children }: { children: ReactNode }) => <strong>{children}</strong>
+const Text = ({ children }: { children: ReactNode }) => <p>{children}</p>
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+    [MARKS.BOLD]: (text: ReactNode) => <Bold>{text}</Bold>,
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => <Text>{children}</Text>,
   },
 }
 export default function Candidat({ candidate, moreCandidates, preview }: Props) {
@@ -200,7 +202,7 @@ export async function getStaticProps({
   params: { slug: string; secret: string }
   preview: boolean
 }) {
-  const { secret, slug } = params
+  const { slug } = params
   const { candidate, moreCandidates } = await getCandidateBySlug(slug, 4, preview)
 
   return {

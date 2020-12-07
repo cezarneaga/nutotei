@@ -1,19 +1,19 @@
 import Layout from 'components/layout'
 import Image from 'next/image'
+import { ReactNode } from 'react'
 import { NextSeo } from 'next-seo'
-import { BLOCKS, MARKS } from '@contentful/rich-text-types'
+import { BLOCKS, MARKS, Block, Inline } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getPage } from '../lib/api'
 import { Page } from '../lib/contentTypes'
-const Bold = ({ children }) => <strong>{children}</strong>
-const Text = ({ children }) => <p className='pt-2'>{children}</p>
-
+const Bold = ({ children }: { children: ReactNode }) => <strong>{children}</strong>
+const Text = ({ children }: { children: ReactNode }) => <p className='pt-2'>{children}</p>
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+    [MARKS.BOLD]: (text: ReactNode) => <Bold>{text}</Bold>,
   },
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => <Text>{children}</Text>,
   },
 }
 export default function IndexPage({ preview, page }: { preview: boolean; page: Page }) {
@@ -68,8 +68,8 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
               className='absolute inset-0 w-full h-full object-cover'
               src={page?.photo.url}
               alt={page?.photo.title}
-              width={page?.photo.width}
-              height={page?.photo.height}
+              width={page?.photo.width || 600}
+              height={page?.photo.height || 600}
               layout='responsive'
             />
           </div>

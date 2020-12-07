@@ -97,8 +97,9 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                       {older.map((candidate) => (
                         <CandidateCard candidate={candidate} key={candidate.sys.id} />
                       ))}
-                      {candidates &&
-                        candidates.map((candidate) => <CandidateCard candidate={candidate} key={candidate.sys.id} />)}
+                      {candidates?.map((candidate: Candidate) => (
+                        <CandidateCard candidate={candidate} key={candidate.sys.id} />
+                      ))}
                     </ul>
                     <button
                       className='mt-12 w-full md:w-auto md:mx-auto flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-red-600 border-red-600 hover:bg-gray-100 md:py-2 md:text-lg md:px-4'
@@ -129,8 +130,8 @@ export async function getStaticProps({
   params: { slug: string; secret: string }
   preview: boolean
 }) {
-  const { secret, slug } = params
-  const category = parties.find((party) => party.slug === slug)
+  const { slug } = params
+  const category = parties.find((party) => party.slug === slug)!
   const candidates = await getCandidatesByParty(category.partyShort, 6, preview)
   const total = await getCandidatesTotalByParty(category.partyShort)
   const [latest, older] = splitAt(4, candidates)
