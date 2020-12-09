@@ -43,9 +43,8 @@ export function Search() {
       </div>
 
       <div
-        className={`${
-          isOpen ? "" : "hidden"
-        } fixed inset-0 top-20 overflow-hidden z-10`}
+        className={`${isOpen ? "" : "hidden"
+          } fixed inset-0 top-20 overflow-hidden z-10`}
       >
         <div className="absolute inset-0 overflow-hidden">
           <section
@@ -132,7 +131,7 @@ export function Search() {
 function Hit({ hit }) {
   return (
     <div className="">
-      <Link href={`/candidat/${hit.slug}`}>
+      <Link href={`/politruc/${hit.slug}`}>
         <a className="inline-flex line-1">
           <Highlight
             attribute="name"
@@ -150,7 +149,7 @@ function Hit({ hit }) {
       <span className="hit-summary">
         <Highlight attribute="review.review" hit={hit} />
       </span>
-      <Link href={`/candidat/${hit.slug}`}>
+      <Link href={`/politruc/${hit.slug}`}>
         <a style={{ float: "right", display: "inline-block", marginRight: 10 }}>
           <ArrowRightCircle />
         </a>
