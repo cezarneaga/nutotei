@@ -1,5 +1,5 @@
-import { operationsDoc } from "lib/queries"
-import { GraphQLClient } from "graphql-request"
+import { operationsDoc } from 'lib/queries'
+import { GraphQLClient } from 'graphql-request'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -21,21 +21,18 @@ export async function fetchGraphQL(
   variables?: { [key: string]: string | number | boolean },
   preview?: boolean
 ) {
-  const result = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${space}`,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${preview ? previewToken : publicToken}`,
-      },
-      body: JSON.stringify({
-        query: query,
-        variables: variables,
-        operationName: operationName,
-      }),
-    }
-  )
+  const result = await fetch(`https://graphql.contentful.com/content/v1/spaces/${space}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${preview ? previewToken : publicToken}`,
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: variables,
+      operationName: operationName,
+    }),
+  })
   const json = await result.json()
 
   if (!!json.errors) {
@@ -48,7 +45,7 @@ export async function fetchGraphQL(
   return json
 }
 export function extractCounty(fetchResponse: { data: any }) {
-  return fetchResponse?.data?.county?.items?.[0] || null;
+  return fetchResponse?.data?.county?.items?.[0] || null
 }
 export function extractCandidate(fetchResponse: { data: any }) {
   return fetchResponse?.data?.candidateCollection?.items?.[0] || null
@@ -59,82 +56,49 @@ export function extractCandidateEntries(fetchResponse: { data: any }) {
 }
 
 export async function getPage(slug: string, preview: boolean) {
-  const { data } = await fetchGraphQL(
-    operationsDoc,
-    "PageQuery",
-    { slug },
-    preview
-  )
+  const { data } = await fetchGraphQL(operationsDoc, 'PageQuery', { slug }, preview)
 
   return data?.page.items[0]
 }
 export async function getCandidates(limit: number, preview: boolean) {
-  const entries = await fetchGraphQL(
-    operationsDoc,
-    "CandidateList",
-    { limit },
-    preview
-  )
+  const entries = await fetchGraphQL(operationsDoc, 'CandidateList', { limit }, preview)
   return extractCandidateEntries(entries)
 }
-export async function getCandidatesByCounty(countyCode: string) {
-  const entries = await fetchGraphQL(operationsDoc, "CandidatesByCounty", {
-    county: countyCode,
+export async function getCandidatesByCounty(countyCode: string | null) {
+  const entries = await fetchGraphQL(operationsDoc, 'CandidatesByCounty', {
+    county: countyCode || '',
   })
   return extractCandidateEntries(entries)
 }
 
-export async function getCandidatesByParty(
-  party: string,
-  limit: number,
-  preview: boolean
-) {
-  const entries = await fetchGraphQL(
-    operationsDoc,
-    "CandidatesByParty",
-    { party, limit, preview },
-    preview
-  )
+export async function getCandidatesByParty(party: string, limit: number, preview: boolean) {
+  const entries = await fetchGraphQL(operationsDoc, 'CandidatesByParty', { party, limit, preview }, preview)
   return extractCandidateEntries(entries)
 }
 export async function getCandidatesTotalByParty(party: string) {
-  const { data } = await fetchGraphQL(operationsDoc, "CandidatesTotalByParty", {
+  const { data } = await fetchGraphQL(operationsDoc, 'CandidatesTotalByParty', {
     party,
   })
 
   return data?.candidateCollection?.total || 0
 }
 
-export async function getCandidateBySlug(
-  slug: string,
-  limit: number,
-  preview: boolean
-) {
-  const entry = await fetchGraphQL(
-    operationsDoc,
-    "CandidateBySlug",
-    { slug, preview },
-    preview
-  )
-  const entries = await fetchGraphQL(
-    operationsDoc,
-    "MoreCandidates",
-    { slug, limit },
-    preview
-  )
+export async function getCandidateBySlug(slug: string, limit: number, preview: boolean) {
+  const entry = await fetchGraphQL(operationsDoc, 'CandidateBySlug', { slug, preview }, preview)
+  const entries = await fetchGraphQL(operationsDoc, 'MoreCandidates', { slug, limit }, preview)
   return {
     candidate: extractCandidate(entry),
     moreCandidates: extractCandidateEntries(entries),
   }
 }
 export async function getAllCandidatesWithSlugs() {
-  const entries = await fetchGraphQL(operationsDoc, "AllCandidatesWithSlugs")
+  const entries = await fetchGraphQL(operationsDoc, 'AllCandidatesWithSlugs')
   return extractCandidateEntries(entries)
 }
 export async function getPreviewProjectBySlug(slug: string) {
   const entry = await fetchGraphQL(
     operationsDoc,
-    "CandidateBySlug",
+    'CandidateBySlug',
     {
       slug,
       preview: true,
@@ -144,7 +108,7 @@ export async function getPreviewProjectBySlug(slug: string) {
   return extractCandidate(entry)
 }
 export async function getCountyById(id: string) {
-  const entry = await fetchGraphQL(operationsDoc, "County", { id }, true);
+  const entry = await fetchGraphQL(operationsDoc, 'County', { id }, true)
 
-  return extractCounty(entry);
+  return extractCounty(entry)
 }

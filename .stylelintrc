@@ -9,7 +9,6 @@
       ]
     }],
     "block-no-empty": null,
-    "unit-whitelist": ["em", "rem", "s", "vw", "vh","%", "px"],
-    "no-descending-specificity": 0
+    "unit-whitelist": ["em", "rem", "s", "vw", "vh","%", "px"]
   }
 }

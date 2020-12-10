@@ -1,24 +1,15 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from "next/document";
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps }
   }
 
   render() {
     return (
-      <Html lang="ro">
+      <Html lang='ro'>
         <Head>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
-          ></script>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -31,15 +22,15 @@ class MyDocument extends Document {
           `,
             }}
           />
-          <link rel="icon" href="/images/favicon.ico" />
+          <link rel='icon' href='/images/favicon.ico' />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

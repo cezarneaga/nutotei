@@ -1,3 +1,3 @@
-export * from "./generic";
-export * from "./Candidate";
-export * from "./Page";
+export * from './generic'
+export * from './Candidate'
+export * from './Page'

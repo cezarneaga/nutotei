@@ -1,14 +1,19 @@
-
-import ReactEcharts from 'echarts-for-react';
-
-export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) => void, data: unknown }) => {
-  const getChartOptions = (data) => {
+import ReactEcharts from 'echarts-for-react'
+interface Data {
+  name: string
+  slug: string
+  pretty: string
+  label: { color: string } | {}
+  itemStyle: { areaLabel: string } | {}
+}
+export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) => void; data: Data[] }) => {
+  const getChartOptions = (data: Data[]) => {
     return {
       tooltip: {
-        show: false,
-        trigger: 'item',
-        formatter: (item) => {
-          return `<strong style="color:#fff">${item.data.label}</strong></br>`
+        show: true,
+        trigger: 'item' as 'item',
+        formatter: (item: any) => {
+          return `<strong style="color:#fff">${item.data.pretty}</strong></br>`
         },
       },
       series: [
@@ -24,8 +29,7 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
             show: true,
             fontWeight: 'lighter',
             fontSize: 10,
-            color: '#888'
-
+            color: '#888',
           },
           emphasis: {
             label: {
@@ -35,26 +39,28 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
             },
             itemStyle: {
               areaColor: 'rgba(220, 38, 38)',
-            }
+            },
           },
-          data: data
-        }]
-    };
+          data,
+        },
+      ],
+    }
   }
-
 
   const onEvents = {
-    'click': onClick,
+    click: onClick,
   }
 
-  return (data &&
-    <div className="h-96 md:h-144 lg:h-150">
-      <ReactEcharts
-        option={getChartOptions(data)}
-        style={{ height: '100%' }}
-        className="react_for_echarts"
-        onEvents={onEvents}
-      />
-    </div>
-  );
+  return (
+    data && (
+      <div className='h-96 md:h-144 lg:h-150'>
+        <ReactEcharts
+          option={getChartOptions(data)}
+          style={{ height: '100%' }}
+          className='react_for_echarts'
+          onEvents={onEvents}
+        />
+      </div>
+    )
+  )
 }

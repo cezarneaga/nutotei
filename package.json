@@ -28,14 +28,29 @@
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@types/echarts": "^4.9.2",
     "@types/node": "^14.14.9",
+    "@types/ramda": "^0.27.32",
     "@types/react": "^17.0.0",
+    "@types/react-instantsearch-dom": "^6.8.0",
     "autoprefixer": "10.0.2",
+    "husky": ">=4",
+    "lint-staged": ">=10",
     "postcss": "8.1.9",
     "prettier": "^2.2.0",
+    "stylelint": "^13.8.0",
     "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^2.0.1",
     "typescript": "^4.1.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.css": "stylelint --fix",
+    "*.{js,ts,tsx,json,md}": "prettier --write --print-width 130 --tab-width 2 --no-semi --single-quote --jsx-single-quote --trailing-comma es5 --jsx-bracket-same-line --arrow-parens always"
+  }
 }
