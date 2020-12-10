@@ -99,22 +99,10 @@ export function Nav() {
                         {parties.map((party) => (
                           <a
                             key={party.slug}
-<<<<<<< HEAD
-                            href={`/politruci/${party.slug}`}
-                            className="-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900"
-                          >
-                            <div className="flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md">
-                              <Image
-                                src={`/images/parties/${party.slug}.png`}
-                                height={40}
-                                width={40}
-                              />
-=======
                             href={`/candidati/${party.slug}`}
                             className='-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'>
                             <div className='flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md'>
                               <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} />
->>>>>>> c9b5b06dde3103d89baffb24fc6af212d0c37b36
                             </div>
                             <div className='ml-4 text-base font-medium'>
                               <p className='text-base font-medium text-gray-900 dark:text-gray-100'>{party.partyShort}</p>
