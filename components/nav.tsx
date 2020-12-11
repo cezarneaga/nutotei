@@ -99,7 +99,7 @@ export function Nav() {
                         {parties.map((party) => (
                           <a
                             key={party.slug}
-                            href={`politruci/${party.slug}`}
+                            href={`/politruci/${party.slug}`}
                             className='-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'>
                             <div className='flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md'>
                               <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} />
@@ -166,7 +166,7 @@ export function Nav() {
                       {parties.map((party) => (
                         <a
                           key={party.slug}
-                          href={`politruci/${party.slug}`}
+                          href={`/politruci/${party.slug}`}
                           className='-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50'>
                           <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-red-500 text-white'>
                             <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} />
