@@ -7,7 +7,7 @@ export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
     <li className='card-big cursor-pointer'>
       <div className='space-y-4'>
         <div className=''>
-          <Link href={`/candidat/${candidate.slug}`}>
+          <Link href={`/politruc/${candidate.slug}`}>
             <a title={candidate.name}>
               <Image
                 className='object-cover shadow-lg rounded-lg'
@@ -22,7 +22,7 @@ export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
         </div>
         <div className='text-lg leading-6 font-medium space-y-1'>
           <h3 className='candidate-detail'>
-            <Link href={`/candidat/${candidate.slug}`}>
+            <Link href={`/politruc/${candidate.slug}`}>
               <a title={candidate.name}>{candidate.name}</a>
             </Link>
           </h3>

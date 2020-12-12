@@ -6,7 +6,7 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
     <li>
       <div className='flex items-center space-x-4 lg:space-x-6'>
         <div className='w-16 h-16 lg:w-20 lg:h-20 '>
-          <Link href={`/candidat/${candidate.slug}`}>
+          <Link href={`/politruc/${candidate.slug}`}>
             <a title={candidate.name}>
               <Image
                 className='rounded-full object-cover'
@@ -21,7 +21,7 @@ export function CandidateCard({ candidate }: { candidate: Candidate }) {
 
         <div className='font-medium text-lg leading-6 space-y-1 '>
           <h3>
-            <Link href={`/candidat/${candidate.slug}`}>
+            <Link href={`/politruc/${candidate.slug}`}>
               <a title={candidate.name}>{candidate.name}</a>
             </Link>
           </h3>

@@ -123,7 +123,7 @@ export interface AlgoliaHit {
 function Hit({ hit }: { hit: AlgoliaHit }) {
   return (
     <div className=''>
-      <Link href={`/candidat/${hit.slug}`}>
+      <Link href={`/politruc/${hit.slug}`}>
         <a className='inline-flex line-1'>
           <Highlight
             attribute='name'
@@ -141,7 +141,7 @@ function Hit({ hit }: { hit: AlgoliaHit }) {
       <span className='hit-summary'>
         <Highlight attribute='review.review' hit={hit} />
       </span>
-      <Link href={`/candidat/${hit.slug}`}>
+      <Link href={`/politruc/${hit.slug}`}>
         <a style={{ float: 'right', display: 'inline-block', marginRight: 10 }}>
           <ArrowRightCircle />
         </a>

@@ -44,16 +44,16 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
           <NextSeo
             title={`${candidate?.name} - Nu tot ei!`}
             description={candidate?.review}
-            canonical={`https://nutotei.ro/candidat/${candidate?.slug}`}
+            canonical={`https://nutotei.ro/politruc/${candidate?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/candidat/${candidate?.slug}`,
+              url: `https://nutotei.ro/politruc/${candidate?.slug}`,
               title: `${candidate?.name} - Nu tot ei!`,
               description: candidate?.review,
               images: [candidate?.mainImage],
             }}
           />
           <ArticleJsonLd
-            url={`https://nutotei.ro/candidat/${candidate?.slug}`}
+            url={`https://nutotei.ro/politruc/${candidate?.slug}`}
             title={candidate?.name}
             images={[candidate?.mainImage.url]}
             datePublished={candidate?.sys.firstPublishedAt}
@@ -217,7 +217,7 @@ export async function getStaticProps({
 export async function getStaticPaths() {
   const allCandidates: Candidate[] = await getAllCandidatesWithSlugs()
   return {
-    paths: allCandidates?.map(({ slug }) => `/candidat/${slug}`),
+    paths: allCandidates?.map(({ slug }) => `/politruc/${slug}`),
     fallback: true,
   }
 }
