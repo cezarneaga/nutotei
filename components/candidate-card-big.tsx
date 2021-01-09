@@ -2,12 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Facebook } from 'react-feather'
 import { Candidate } from 'lib/contentTypes'
-export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
+export function CandidateCardBig({ candidate, type }: { candidate: Candidate; type: string }) {
   return (
     <li className='card-big cursor-pointer'>
       <div className='space-y-4'>
         <div className=''>
-          <Link href={`/politruc/${candidate.slug}`}>
+          <Link href={`/${type}/${candidate.slug}`}>
             <a title={candidate.name}>
               <Image
                 className='object-cover shadow-lg rounded-lg'
@@ -22,7 +22,7 @@ export function CandidateCardBig({ candidate }: { candidate: Candidate }) {
         </div>
         <div className='text-lg leading-6 font-medium space-y-1'>
           <h3 className='candidate-detail'>
-            <Link href={`/politruc/${candidate.slug}`}>
+            <Link href={`/${type}/${candidate.slug}`}>
               <a title={candidate.name}>{candidate.name}</a>
             </Link>
           </h3>

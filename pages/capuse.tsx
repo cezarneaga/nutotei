@@ -4,30 +4,26 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import { useSWRInfinite } from 'swr'
 import Layout from 'components/layout'
-import { Latest } from 'components/latest'
+import { LatestTicks } from 'components/latest-ticks'
 import { CandidateCard } from 'components/candidate-card'
-import { CategoryHeader } from 'components/category-header'
-import { getCandidatesByParty, swrFetcher, getCandidatesTotalByParty } from 'lib/api'
+import { TicksHeader } from 'components/ticks-header'
+import { getTicks, swrFetcher } from 'lib/api'
 import { Candidate } from 'lib/contentTypes'
-import { parties, Party } from 'lib/parties'
 type Props = {
   latest: Candidate[]
   older: Candidate[]
   preview: boolean
-  category: Party
   total: number
 }
 const limit = 6
-export default function Candidat({ latest, older, category, preview, total }: Props) {
+export default function Candidat({ latest, older, total, preview }: Props) {
   const router = useRouter()
   if (!router.isFallback && !latest) {
     return <ErrorPage statusCode={404} />
   }
 
   const { data, error, size, setSize } = useSWRInfinite((index) => {
-    return `{candidateCollection(where: {party: "${
-      category.partyShort
-    }"}, order: sys_firstPublishedAt_DESC, limit: ${limit}, skip: ${index * limit + 6}) {
+    return `{tickCollection( order: sys_firstPublishedAt_DESC, limit: ${limit}, skip: ${index * limit + 6}) {
         items {
           sys {
             id
@@ -61,18 +57,18 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
       ) : (
         <>
           <NextSeo
-            title={`De la ${category.partyShort} - Nu tot ei!`}
-            description={category?.party}
-            canonical={`https://nutotei.ro/politruci/${category?.slug}`}
+            title={`România căpușată - Nu tot ei!`}
+            description={`Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`}
+            canonical={`https://nutotei.ro/capuse`}
             openGraph={{
-              url: `https://nutotei.ro/politruci/${category?.slug}`,
-              title: `De la ${category?.partyShort} - Nu tot ei!`,
-              description: category?.party,
-              images: latest?.map((candidate) => candidate.mainImage),
+              url: `https://nutotei.ro/capuse`,
+              title: `România căpușată - Nu tot ei!`,
+              description: `Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`,
+              images: latest?.map((tick) => tick.mainImage),
             }}
           />
-          <CategoryHeader category={category} number={total} />
-          <Latest candidates={latest} />
+          <TicksHeader number={total} />
+          <LatestTicks candidates={latest} type='capusa' />
           {older.length > 0 && (
             <div className='bg-white'>
               <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
@@ -95,10 +91,10 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                   <div className='lg:col-span-2'>
                     <ul className='space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8'>
                       {older.map((candidate) => (
-                        <CandidateCard candidate={candidate} type='politruc' key={candidate.sys.id} />
+                        <CandidateCard candidate={candidate} type='capusa' key={candidate.sys.id} />
                       ))}
                       {candidates?.map((candidate: Candidate) => (
-                        <CandidateCard candidate={candidate} type='politruc' key={candidate.sys.id} />
+                        <CandidateCard candidate={candidate} type='capusa' key={candidate.sys.id} />
                       ))}
                     </ul>
                     <button
@@ -123,33 +119,16 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
     </Layout>
   )
 }
-export async function getStaticProps({
-  params,
-  preview = false,
-}: {
-  params: { slug: string; secret: string }
-  preview: boolean
-}) {
-  const { slug } = params
-  const category = parties.find((party) => party.slug === slug)!
-  const candidates = await getCandidatesByParty(category.partyShort, 6, preview)
-  const total = await getCandidatesTotalByParty(category.partyShort)
-  const [latest, older] = splitAt(4, candidates)
-
+export async function getStaticProps({ preview = false }: { preview: boolean }) {
+  const ticks = await getTicks(6, preview)
+  const [latest, older] = splitAt(4, ticks)
+  const total = ticks.length
   return {
     props: {
       preview,
-      category,
       latest,
       older,
       total,
     },
-  }
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: parties?.map(({ slug }) => `/politruci/${slug}`),
-    fallback: true,
   }
 }

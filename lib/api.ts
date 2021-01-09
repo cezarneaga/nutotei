@@ -1,4 +1,4 @@
-import { operationsDoc } from 'lib/queries'
+import { operationsDoc, ticksDoc } from 'lib/queries'
 import { GraphQLClient } from 'graphql-request'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
@@ -50,11 +50,31 @@ export function extractCounty(fetchResponse: { data: any }) {
 export function extractCandidate(fetchResponse: { data: any }) {
   return fetchResponse?.data?.candidateCollection?.items?.[0] || null
 }
-
 export function extractCandidateEntries(fetchResponse: { data: any }) {
   return fetchResponse?.data?.candidateCollection?.items || []
 }
-
+export function extractTick(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.tickCollection?.items?.[0] || null
+}
+export function extractTickEntries(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.tickCollection?.items || []
+}
+export async function getTicks(limit: number, preview: boolean) {
+  const entries = await fetchGraphQL(ticksDoc, 'TicksList', { limit }, preview)
+  return extractTickEntries(entries)
+}
+export async function getTickBySlug(slug: string, limit: number, preview: boolean) {
+  const entry = await fetchGraphQL(ticksDoc, 'TickBySlug', { slug, preview }, preview)
+  const entries = await fetchGraphQL(ticksDoc, 'MoreTicks', { slug, limit }, preview)
+  return {
+    tick: extractTick(entry),
+    moreTicks: extractTickEntries(entries),
+  }
+}
+export async function getAllTicksWithSlugs() {
+  const entries = await fetchGraphQL(ticksDoc, 'AllTicksWithSlugs')
+  return extractTickEntries(entries)
+}
 export async function getPage(slug: string, preview: boolean) {
   const { data } = await fetchGraphQL(operationsDoc, 'PageQuery', { slug }, preview)
 
@@ -70,7 +90,6 @@ export async function getCandidatesByCounty(countyCode: string | null) {
   })
   return extractCandidateEntries(entries)
 }
-
 export async function getCandidatesByParty(party: string, limit: number, preview: boolean) {
   const entries = await fetchGraphQL(operationsDoc, 'CandidatesByParty', { party, limit, preview }, preview)
   return extractCandidateEntries(entries)
@@ -82,7 +101,6 @@ export async function getCandidatesTotalByParty(party: string) {
 
   return data?.candidateCollection?.total || 0
 }
-
 export async function getCandidateBySlug(slug: string, limit: number, preview: boolean) {
   const entry = await fetchGraphQL(operationsDoc, 'CandidateBySlug', { slug, preview }, preview)
   const entries = await fetchGraphQL(operationsDoc, 'MoreCandidates', { slug, limit }, preview)
@@ -101,7 +119,6 @@ export async function getPreviewProjectBySlug(slug: string) {
     'CandidateBySlug',
     {
       slug,
-      preview: true,
     },
     true
   )

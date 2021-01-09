@@ -162,3 +162,92 @@ export const operationsDoc = `
     }
   }
 `
+export const ticksDoc = `
+query AllTicksWithSlugs {
+  tickCollection(
+    where: { slug_exists: true }
+    order: sys_firstPublishedAt_DESC
+  ) {
+    items {
+      slug
+    }
+  }
+}
+query TicksList($limit: Int!) {
+  tickCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...photoUrl
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
+        }
+      }
+      party
+      facebookLink
+    }
+  }
+}
+
+query TickBySlug($slug: String!, $preview: Boolean!) {
+  tickCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...photoUrl
+      content {
+        json
+      }
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
+        }
+      }
+      party
+      facebookLink
+    }
+  }
+}
+query MoreTicks($slug: String!, $limit: Int!) {
+  tickCollection(where: {slug_not_in: [$slug]}, order: sys_firstPublishedAt_DESC, limit: $limit) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      party
+      ...photoUrl
+    }
+  }
+}
+fragment photoUrl on Tick{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
