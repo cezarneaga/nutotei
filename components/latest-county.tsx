@@ -18,7 +18,7 @@ export function LatestCounty({ candidates, countyName }: { candidates: Candidate
           <div className='lg:col-span-2'>
             <ul className='space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8'>
               {candidates.map((candidate) => (
-                <CandidateCardBig candidate={candidate} key={candidate.sys.id} />
+                <CandidateCardBig type='politruc' candidate={candidate} key={candidate.sys.id} />
               ))}
             </ul>
           </div>
