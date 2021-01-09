@@ -16,7 +16,7 @@ export function LatestParty({ slug, candidates }: { slug: string; candidates: Ca
           <div className='lg:col-span-2'>
             <ul className='space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8'>
               {candidates.map((candidate) => (
-                <CandidateCard candidate={candidate} key={candidate.sys.id} />
+                <CandidateCard type='politruc' candidate={candidate} key={candidate.sys.id} />
               ))}
             </ul>
           </div>
