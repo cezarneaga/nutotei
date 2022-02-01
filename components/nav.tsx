@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import { Transition } from '@headlessui/react'
-import { Facebook, Mail } from 'react-feather'
+import { ArrowRightCircle, Facebook, Mail } from 'react-feather'
 import { parties } from 'lib/parties'
 import { Search } from 'components/instantsearch'
 
@@ -53,6 +53,15 @@ export function Nav() {
             </button>
           </div>
           <nav className='hidden md:flex space-x-10'>
+            <Link href='/ani-pe-bune' passHref>
+              <span
+                className={`text-base cursor-pointer font-medium ${
+                  activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
+                } hover:text-gray-900 dark:hover:text-gray-100`}
+              >
+                A.N.I. <sub className='font-normal italic text-sm text-red-600'>pe bune</sub>
+              </span>
+            </Link>
             <div className='relative'>
               <button
                 type='button'
@@ -63,7 +72,7 @@ export function Nav() {
                 onMouseEnter={() => setShow('partide')}
                 onMouseLeave={() => {
                   setTimeout(() => {
-                    ;() => setShow('')
+                    return () => setShow('')
                   }, 200)
                 }}
               >
@@ -93,34 +102,31 @@ export function Nav() {
                 leaveFrom='opacity-100 translate-y-0'
                 leaveTo='opacity-0 translate-y-1'
               >
-                {(ref) => (
-                  <div
-                    ref={ref}
-                    onMouseEnter={() => setShow('partide')}
-                    onMouseLeave={() => setShow('')}
-                    className='absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0'
-                  >
-                    <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
-                      <div className='z-10 relative grid gap-6  bg-white dark:bg-gray-800 px-5 py-6 sm:gap-8 sm:p-8'>
-                        {parties.map((party) => (
-                          <a
-                            key={party.slug}
-                            href={`/politruci/${party.slug}`}
-                            className='-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'
-                          >
-                            <div className='flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md'>
-                              <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} alt={party.party} />
-                            </div>
-                            <div className='ml-4 text-base font-medium'>
-                              <p className='text-base font-medium text-gray-900 dark:text-gray-100'>{party.partyShort}</p>
-                              <p className='mt-1 text-sm text-gray-500 dark:text-gray-200'>{party.party}</p>
-                            </div>
-                          </a>
-                        ))}
-                      </div>
+                <div
+                  onMouseEnter={() => setShow('partide')}
+                  onMouseLeave={() => setShow('')}
+                  className='absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0'
+                >
+                  <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
+                    <div className='z-10 relative grid gap-6  bg-white dark:bg-gray-800 px-5 py-6 sm:gap-8 sm:p-8'>
+                      {parties.map((party) => (
+                        <a
+                          key={party.slug}
+                          href={`/politruci/${party.slug}`}
+                          className='-m-3 p-3 flex rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'
+                        >
+                          <div className='flex-shrink-0 flex mt-1 items-center justify-center h-10 w-10 rounded-md'>
+                            <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} alt={party.party} />
+                          </div>
+                          <div className='ml-4 text-base font-medium'>
+                            <p className='text-base font-medium text-gray-900 dark:text-gray-100'>{party.partyShort}</p>
+                            <p className='mt-1 text-sm text-gray-500 dark:text-gray-200'>{party.party}</p>
+                          </div>
+                        </a>
+                      ))}
                     </div>
                   </div>
-                )}
+                </div>
               </Transition>
             </div>
             <Link href='/harta/bucuresti' passHref>
@@ -142,7 +148,7 @@ export function Nav() {
               </span>
             </Link>
           </nav>
-          <div className={`hidden md:flex items-center justify-end md:flex-1 lg:w-0`}>
+          <div className={`hidden md:flex items-center justify-end md:flex-1 md:w-0`}>
             <Search />
           </div>
         </div>
@@ -155,89 +161,93 @@ export function Nav() {
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          {(ref) => (
-            <div ref={ref} className='absolute z-10 top-0 h-screen inset-x-0 p-2 transition transform origin-top-right md:hidden'>
-              <div className='rounded-lg shadow-xl h-full ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
-                <div className='pt-5 pb-6 px-5'>
-                  <div className={`${showNav ? '' : 'hidden'} md:flex items-center justify-end md:flex-1 lg:w-0`}>
-                    <Search />
-                  </div>
+          <div className='absolute z-10 top-0 h-screen inset-x-0 p-2 transition transform origin-top-right md:hidden'>
+            <div className='rounded-lg shadow-xl h-full ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
+              <div className='pt-5 pb-6 px-5'>
+                <div className={`${showNav ? '' : 'hidden'} md:flex items-center justify-end md:flex-1 lg:w-0`}>
+                  <Search />
                 </div>
-                <div className='pt-5 pb-6 px-5'>
-                  <div className='flex items-center justify-between'>
-                    <div>
-                      <Link href='#' passHref>
-                        <h1 className=' font-thin text-3xl '>Partide</h1>
-                      </Link>
-                    </div>
+              </div>
+              <div className='pt-5 pb-6 px-5'>
+                <Link href='/ani-pe-bune' passHref>
+                  <div className='flex items-center'>
+                    <h1 className='font-thin text-3xl '>
+                      A.N.I. <sub className='font-normal text-sm text-red-600 italic'>pe bune</sub>
+                    </h1>
+                    <ArrowRightCircle className='ml-4 text-gray-400' />
                   </div>
-                  <div className='mt-6'>
-                    <nav className='grid grid-cols-2 gap-7'>
-                      {parties.map((party) => (
-                        <a
-                          key={party.slug}
-                          href={`/politruci/${party.slug}`}
-                          className='-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50'
-                        >
-                          <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-red-500 text-white'>
-                            <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} alt={party.party} />
-                          </div>
-                          <div className='ml-4 text-base font-medium text-gray-900'>{party.partyShort}</div>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
+                </Link>
+              </div>
+              <div className='pt-5 pb-6 px-5'>
+                <div className='flex items-center justify-between'>
+                  <h1 className=' font-thin text-3xl '>Partide</h1>
                 </div>
-
-                <div className='py-6 px-5'>
-                  <div className='grid grid-cols-4 gap-4 justify-items-center'>
-                    <Link href='/harta/bucuresti' passHref>
-                      <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
-                    </Link>
-                    <Link href='/despre' passHref>
-                      <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Despre</a>
-                    </Link>
-                    <a
-                      href='https://facebook.com/valeriu.nicolae.39'
-                      target='_blank'
-                      className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
-                      rel='noreferrer noopener'
-                    >
-                      <Facebook />
-                    </a>
-                    <a
-                      href='mailto:valeriu@nutotei.ro'
-                      className='ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
-                    >
-                      <Mail />
-                    </a>
-                  </div>
-                </div>
-                <div className='pt-5 pb-6 px-5'>
-                  <div className='ml-auto'>
-                    <button
-                      type='button'
-                      onClick={() => setShowNav(false)}
-                      className='w-full flex mt-12 items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10'
-                    >
-                      {/*Heroicon name: x */}
-                      <svg
-                        className='h-6 w-6'
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        stroke='currentColor'
-                        aria-hidden='true'
+                <div className='mt-6'>
+                  <nav className='grid grid-cols-2 gap-7'>
+                    {parties.map((party) => (
+                      <a
+                        key={party.slug}
+                        href={`/politruci/${party.slug}`}
+                        className='-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50'
                       >
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
-                      </svg>
-                      <span className='pl-4'>Închide meniul</span>
-                    </button>
-                  </div>
+                        <div className='flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-red-500 text-white'>
+                          <Image src={`/images/parties/${party.slug}.png`} height={40} width={40} alt={party.party} />
+                        </div>
+                        <div className='ml-4 text-base font-medium text-gray-900'>{party.partyShort}</div>
+                      </a>
+                    ))}
+                  </nav>
+                </div>
+              </div>
+
+              <div className='py-6 px-5'>
+                <div className='grid grid-cols-4 gap-4 justify-items-center'>
+                  <Link href='/harta/bucuresti' passHref>
+                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
+                  </Link>
+                  <Link href='/despre' passHref>
+                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Despre</a>
+                  </Link>
+                  <a
+                    href='https://facebook.com/valeriu.nicolae.39'
+                    target='_blank'
+                    className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
+                    rel='noreferrer noopener'
+                  >
+                    <Facebook />
+                  </a>
+                  <a
+                    href='mailto:valeriu@nutotei.ro'
+                    className='ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
+                  >
+                    <Mail />
+                  </a>
+                </div>
+              </div>
+              <div className='pt-5 pb-6 px-5'>
+                <div className='ml-auto'>
+                  <button
+                    type='button'
+                    onClick={() => setShowNav(false)}
+                    className='w-full flex mt-12 items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10'
+                  >
+                    {/*Heroicon name: x */}
+                    <svg
+                      className='h-6 w-6'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      aria-hidden='true'
+                    >
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
+                    </svg>
+                    <span className='pl-4'>Închide meniul</span>
+                  </button>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </Transition>
       </div>
     </>

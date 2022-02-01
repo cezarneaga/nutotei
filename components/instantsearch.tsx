@@ -21,7 +21,7 @@ export function Search() {
 
   return (
     <InstantSearch indexName={indexName} searchClient={searchClient}>
-      <div className='group md:leading-6 md:ml-20 font-medium flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200'>
+      <div className='group md:leading-6 lg:ml-20 font-medium flex items-center   hover:text-gray-600 transition-colors duration-200 md:w-[130px]'>
         <div className='sr-only' id='search'>
           Caută candidați
         </div>
@@ -42,7 +42,8 @@ export function Search() {
               enterTo='translate-x-0'
               leave='transform transition ease-in-out duration-500 sm:duration-700'
               leaveFrom='translate-x-0'
-              leaveTo='translate-x-full'>
+              leaveTo='translate-x-full'
+            >
               <div className='w-screen max-w-md'>
                 <div className='h-[100vh] flex flex-col py-6 bg-white shadow-xl overflow-y-scroll'>
                   <div className='px-4 sm:px-6'>
@@ -55,7 +56,8 @@ export function Search() {
                       <div className='ml-3 h-7 flex items-center'>
                         <button
                           onClick={() => setIsOpen(false)}
-                          className='bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                          className='bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        >
                           <span className='sr-only'>Close panel</span>
                           <svg
                             className='h-6 w-6'
@@ -63,7 +65,8 @@ export function Search() {
                             fill='none'
                             viewBox='0 0 24 24'
                             stroke='currentColor'
-                            aria-hidden='true'>
+                            aria-hidden='true'
+                          >
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
                           </svg>
                         </button>
