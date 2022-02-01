@@ -22,13 +22,15 @@ export function Footer() {
           <p className='text-center text-base text-gray-700'>
             dezvoltat de{' '}
             <a
+              id='conversion'
               className='font-bold'
               href='https://constnext.com'
               target='_blank'
-              title='constNEXT'
+              title='const NEXT'
               rel='noopener noreferrer'
-              style={{ color: '#4278b3' }}>
-              constNEXT
+              style={{ color: '#4278b3' }}
+            >
+              const NEXT
             </a>
           </p>
         </div>
