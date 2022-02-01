@@ -191,11 +191,11 @@ export function Nav() {
 
                 <div className='py-6 px-5'>
                   <div className='grid grid-cols-4 gap-4 justify-items-center'>
-                    <Link href='/harta/bucuresti' className='text-base font-medium text-gray-500 hover:text-gray-900'>
-                      Harta
+                    <Link href='/harta/bucuresti' passHref>
+                      <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
                     </Link>
-                    <Link href='/despre' className='text-base font-medium text-gray-500 hover:text-gray-900'>
-                      Despre
+                    <Link href='/despre' passHref>
+                      <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Despre</a>
                     </Link>
                     <a
                       href='https://facebook.com/valeriu.nicolae.39'

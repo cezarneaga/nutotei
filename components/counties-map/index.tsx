@@ -13,7 +13,7 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
         show: true,
         trigger: 'item' as 'item',
         formatter: (item: any) => {
-          return `<strong style="color:#fff">${item.data.pretty}</strong></br>`
+          return `<strong style="color:#333">${item.data.pretty}</strong></br>`
         },
       },
       series: [
@@ -33,9 +33,9 @@ export const CountiesMap = ({ onClick, data }: { onClick: (mapEvent: unknown) =>
           },
           emphasis: {
             label: {
-              show: false,
+              show: true,
               color: '#fff',
-              offset: [0, 20],
+              offset: [0, 0],
             },
             itemStyle: {
               areaColor: 'rgba(220, 38, 38)',

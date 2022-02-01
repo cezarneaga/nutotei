@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 
