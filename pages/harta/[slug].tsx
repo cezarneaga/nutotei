@@ -26,15 +26,15 @@ export default function IndexPage({
 }) {
   const [selectedCountyCode, setSelectedCountyCode] = useState<string | null>(null)
   const router = useRouter()
-  if (router.isFallback && !candidatesByCounty) {
-    return <ErrorPage statusCode={404} />
-  }
 
   useEffect(() => {
     const countyCode = getCountyCodeBySlug(slug as string)
     setSelectedCountyCode(countyCode)
   }, [slug])
 
+  if (router.isFallback && !candidatesByCounty) {
+    return <ErrorPage statusCode={404} />
+  }
   const filterCanditatesByCounty = (mapEvent: unknown) => {
     const {
       data: { slug },

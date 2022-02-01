@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo'
 import { splitAt } from 'ramda'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { useSWRInfinite } from 'swr'
+import useSWRInfinite from 'swr/infinite'
 import Layout from 'components/layout'
 import { Latest } from 'components/latest'
 import { CandidateCard } from 'components/candidate-card'
@@ -20,9 +20,6 @@ type Props = {
 const limit = 6
 export default function Candidat({ latest, older, category, preview, total }: Props) {
   const router = useRouter()
-  if (!router.isFallback && !latest) {
-    return <ErrorPage statusCode={404} />
-  }
 
   const { data, error, size, setSize } = useSWRInfinite((index) => {
     return `{candidateCollection(where: {party: "${
@@ -46,7 +43,9 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
       }
     }`
   }, swrFetcher)
-
+  if (!router.isFallback && !latest) {
+    return <ErrorPage statusCode={404} />
+  }
   const isLoadingInitialData = !data && !error
   const isSSR = typeof window === 'undefined'
   const isLoadingMore = !isSSR ? isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === 'undefined') : false
@@ -87,7 +86,8 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                     <div className='mt-8 rounded-md shadow sm:mt-4 '>
                       <a
                         href='mailto:valeriu@nutotei.ro'
-                        className='w-full md:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'>
+                        className='w-full md:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'
+                      >
                         Trimite-ne CV-uri
                       </a>
                     </div>
@@ -104,7 +104,8 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                     <button
                       className='mt-12 w-full md:w-auto md:mx-auto flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-red-600 border-red-600 hover:bg-gray-100 md:py-2 md:text-lg md:px-4'
                       disabled={typeof window !== 'undefined' ? isLoadingMore || isReachingEnd : true}
-                      onClick={() => setSize(size + 1)}>
+                      onClick={() => setSize(size + 1)}
+                    >
                       {typeof window !== 'undefined'
                         ? isLoadingMore
                           ? 'se încarcă...'
