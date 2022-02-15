@@ -84,7 +84,8 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                       height='384'
                       fill='none'
                       viewBox='0 0 404 384'
-                      aria-hidden='true'>
+                      aria-hidden='true'
+                    >
                       <defs>
                         <pattern
                           id='de316486-4a29-4312-bdfc-fbce2132a2c1'
@@ -92,7 +93,8 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                           y='0'
                           width='20'
                           height='20'
-                          patternUnits='userSpaceOnUse'>
+                          patternUnits='userSpaceOnUse'
+                        >
                           <rect x='0' y='0' width='4' height='4' className='text-gray-200' fill='currentColor' />
                         </pattern>
                       </defs>
@@ -117,7 +119,8 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                               target='_blank'
                               rel='noopener noreferrer'
                               title='Sursa Facebook'
-                              className='text-blue-600 flex hover:text-blue-700 cursor-pointer clickable h-4'>
+                              className='text-blue-600 flex hover:text-blue-700 cursor-pointer clickable h-4'
+                            >
                               <Facebook size={18} className='inline' />
                               <span className='ml-2 my-auto inline'>Sursa articolului pe facebook</span>
                               <svg
@@ -125,7 +128,8 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                className='pl-2'>
+                                className='pl-2'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
@@ -142,13 +146,15 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                               target='_blank'
                               rel='noreferrer noopener'
                               className='mt-4 text-red-700 flex hover:text-red-800 cursor-pointer clickable h-4'
-                              title={`Sursa CV - ${cv.title}`}>
+                              title={`Sursa CV - ${cv.title}`}
+                            >
                               <svg
                                 className='w-5 h-5'
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
-                                stroke='currentColor'>
+                                stroke='currentColor'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
@@ -162,7 +168,8 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                className='pl-2'>
+                                className='pl-2'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
@@ -181,7 +188,7 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                       <strong className='text-lg text-gray-500'>{tick.review}</strong>
                     </div>
                     <div className='mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-                      {documentToReactComponents(tick.content.json, options)}
+                      {tick.content.json && documentToReactComponents(tick.content.json, options)}
                     </div>
                   </div>
                 </div>

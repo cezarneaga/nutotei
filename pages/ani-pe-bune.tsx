@@ -6,7 +6,7 @@ import useSWRInfinite from 'swr/infinite'
 import Layout from 'components/layout'
 import { LatestTicks } from 'components/latest-ticks'
 import { CandidateCard } from 'components/candidate-card'
-import { TicksHeader } from 'components/ticks-header'
+import { AniHeader } from 'components/ani-header'
 import { getAnis, swrFetcher } from 'lib/api'
 import { Candidate } from 'lib/contentTypes'
 type Props = {
@@ -66,8 +66,8 @@ export default function Candidat({ latest, older, total, preview }: Props) {
               images: latest?.map((ani) => ani.mainImage),
             }}
           />
-          <TicksHeader number={total} />
-          <LatestTicks candidates={latest} type='capusa' />
+          <AniHeader number={total} />
+          <LatestTicks candidates={latest} type='dosar' />
           {older.length > 0 && (
             <div className='bg-white'>
               <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
