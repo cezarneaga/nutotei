@@ -56,6 +56,9 @@ export function extractCandidateEntries(fetchResponse: { data: any }) {
 export function extractTick(fetchResponse: { data: any }) {
   return fetchResponse?.data?.tickCollection?.items?.[0] || null
 }
+export function extractAni(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.aniPeBuneCollection?.items?.[0] || null
+}
 export function extractTickEntries(fetchResponse: { data: any }) {
   return fetchResponse?.data?.tickCollection?.items || []
 }
@@ -76,6 +79,14 @@ export async function getTickBySlug(slug: string, limit: number, preview: boolea
   return {
     tick: extractTick(entry),
     moreTicks: extractTickEntries(entries),
+  }
+}
+export async function getAniBySlug(slug: string, limit: number, preview: boolean) {
+  const entry = await fetchGraphQL(aniDoc, 'AniBySlug', { slug, preview }, preview)
+  const entries = await fetchGraphQL(aniDoc, 'MoreAni', { slug, limit }, preview)
+  return {
+    ani: extractAni(entry),
+    moreAnis: extractAniEntries(entries),
   }
 }
 export async function getAllTicksWithSlugs() {
