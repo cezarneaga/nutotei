@@ -251,3 +251,92 @@ fragment photoUrl on Tick{
   }
 }
 `
+export const aniDoc = `
+query AllAniWithSlugs {
+  aniPeBuneCollection(
+    where: { slug_exists: true }
+    order: sys_firstPublishedAt_DESC
+  ) {
+    items {
+      slug
+    }
+  }
+}
+query AniList($limit: Int!) {
+  aniPeBuneCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...photoUrl
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
+        }
+      }
+      party
+      facebookLink
+    }
+  }
+}
+
+query AniBySlug($slug: String!, $preview: Boolean!) {
+  aniPeBuneCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...photoUrl
+      content {
+        json
+      }
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
+        }
+      }
+      party
+      facebookLink
+    }
+  }
+}
+query MoreAni($slug: String!, $limit: Int!) {
+  aniPeBuneCollection(where: {slug_not_in: [$slug]}, order: sys_firstPublishedAt_DESC, limit: $limit) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      party
+      ...photoUrl
+    }
+  }
+}
+fragment photoUrl on AniPeBune{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`

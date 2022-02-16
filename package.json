@@ -3,54 +3,59 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start:ci": "INSECURE_AUTH=true yarn run start",
+    "lint": "next lint",
+    "typecheck": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test-all": "yarn lint && yarn typecheck && yarn test",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.2",
-    "@contentful/rich-text-types": "^14.1.2",
-    "@headlessui/react": "^0.2.0",
-    "@tailwindcss/aspect-ratio": "^0.2.0",
-    "@tailwindcss/typography": "^0.3.1",
-    "algoliasearch": "^4.8.2",
-    "echarts": "^4.9.0",
-    "echarts-for-react": "^2.0.16",
-    "graphql": "^15.4.0",
-    "graphql-request": "^3.3.0",
-    "next": "latest",
-    "next-seo": "^4.17.0",
-    "ramda": "^0.27.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "@contentful/rich-text-react-renderer": "^15.11.1",
+    "@contentful/rich-text-types": "^15.11.1",
+    "@headlessui/react": "^1.4.3",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "algoliasearch": "^4.12.1",
+    "echarts": "^5.3.0",
+    "echarts-for-react": "^3.0.2",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.0.0",
+    "next": "12.0.10",
+    "next-seo": "^5.1.0",
+    "ramda": "^0.28.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
-    "react-instantsearch-dom": "^6.8.2",
-    "swr": "^0.3.9"
+    "react-instantsearch-dom": "^6.22.0",
+    "swr": "^1.2.1"
   },
   "devDependencies": {
-    "@types/echarts": "^4.9.2",
-    "@types/node": "^14.14.9",
-    "@types/ramda": "^0.27.32",
-    "@types/react": "^17.0.0",
-    "@types/react-instantsearch-dom": "^6.8.0",
-    "autoprefixer": "10.0.2",
-    "husky": ">=4",
-    "lint-staged": ">=10",
-    "postcss": "8.1.9",
-    "prettier": "^2.2.0",
-    "stylelint": "^13.8.0",
-    "stylelint-config-recommended": "^3.0.0",
-    "tailwindcss": "^2.0.1",
-    "typescript": "^4.1.2"
+    "@types/echarts": "^4.9.13",
+    "@types/node": "^17.0.18",
+    "@types/ramda": "^0.27.64",
+    "@types/react": "^17.0.39",
+    "@types/react-instantsearch-dom": "^6.12.2",
+    "autoprefixer": "10.4.2",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.0.10",
+    "husky": ">=7.0.4",
+    "lint-staged": ">=12.3.4",
+    "postcss": "8.4.6",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.5.0",
+    "stylelint-config-recommended": "^7.0.0",
+    "tailwindcss": "^3.0.22",
+    "typescript": "^4.5.5"
   },
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.css": "stylelint --fix",
-    "*.{js,ts,tsx,json,md}": "prettier --write --print-width 130 --tab-width 2 --no-semi --single-quote --jsx-single-quote --trailing-comma es5 --jsx-bracket-same-line --arrow-parens always"
+    "*.{js,ts,tsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,json,md}": "prettier --write"
   }
 }

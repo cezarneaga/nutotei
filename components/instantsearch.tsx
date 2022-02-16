@@ -21,7 +21,7 @@ export function Search() {
 
   return (
     <InstantSearch indexName={indexName} searchClient={searchClient}>
-      <div className='group md:leading-6 md:ml-20 font-medium flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200'>
+      <div className='group md:leading-6 lg:ml-20 font-medium flex items-center   hover:text-gray-600 transition-colors duration-200 md:w-[130px]'>
         <div className='sr-only' id='search'>
           Caută candidați
         </div>
@@ -32,7 +32,6 @@ export function Search() {
           }}
         />
       </div>
-
       <div className={`${isOpen ? '' : 'hidden'} fixed inset-0 top-20 overflow-hidden z-10`}>
         <div className='absolute inset-0 overflow-hidden'>
           <section className='absolute inset-y-0 right-0 md:pl-10 max-w-full flex' aria-labelledby='slide-over-heading'>
@@ -43,61 +42,62 @@ export function Search() {
               enterTo='translate-x-0'
               leave='transform transition ease-in-out duration-500 sm:duration-700'
               leaveFrom='translate-x-0'
-              leaveTo='translate-x-full'>
-              {(ref) => (
-                <div ref={ref} className='w-screen max-w-md'>
-                  <div className='h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll'>
-                    <div className='px-4 sm:px-6'>
-                      <div className='flex items-start justify-between'>
-                        <PoweredBy
-                          translations={{
-                            searchBy: 'search by',
-                          }}
-                        />
-                        <div className='ml-3 h-7 flex items-center'>
-                          <button
-                            onClick={() => setIsOpen(false)}
-                            className='bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-                            <span className='sr-only'>Close panel</span>
-                            <svg
-                              className='h-6 w-6'
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke='currentColor'
-                              aria-hidden='true'>
-                              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='mt-6 relative flex-1 px-4 sm:px-6'>
-                      <div className='absolute inset-0 px-4 sm:px-6'>
-                        <Configure hitsPerPage={6} />
-                        <div className='text-xs'>filtre</div>
-                        <div className='flex'>
-                          <MenuSelect
-                            attribute={'county.label'}
-                            limit={42}
-                            translations={{
-                              seeAllOption: 'Toate județele',
-                            }}
-                          />
-                          <MenuSelect
-                            attribute={'party'}
-                            limit={10}
-                            translations={{
-                              seeAllOption: 'Toate partidele',
-                            }}
-                          />
-                        </div>
-                        <Hits hitComponent={Hit} />
+              leaveTo='translate-x-full'
+            >
+              <div className='w-screen max-w-md'>
+                <div className='h-[100vh] flex flex-col py-6 bg-white shadow-xl overflow-y-scroll'>
+                  <div className='px-4 sm:px-6'>
+                    <div className='flex items-start justify-between'>
+                      <PoweredBy
+                        translations={{
+                          searchBy: 'search by',
+                        }}
+                      />
+                      <div className='ml-3 h-7 flex items-center'>
+                        <button
+                          onClick={() => setIsOpen(false)}
+                          className='bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        >
+                          <span className='sr-only'>Close panel</span>
+                          <svg
+                            className='h-6 w-6'
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            stroke='currentColor'
+                            aria-hidden='true'
+                          >
+                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M6 18L18 6M6 6l12 12' />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
+                  <div className='mt-6 relative flex-1 px-4 sm:px-6'>
+                    <div className='absolute inset-0 px-4 sm:px-6'>
+                      <Configure hitsPerPage={6} />
+                      <div className='text-xs'>filtre</div>
+                      <div className='flex'>
+                        <MenuSelect
+                          attribute={'county.label'}
+                          limit={42}
+                          translations={{
+                            seeAllOption: 'Toate județele',
+                          }}
+                        />
+                        <MenuSelect
+                          attribute={'party'}
+                          limit={10}
+                          translations={{
+                            seeAllOption: 'Toate partidele',
+                          }}
+                        />
+                      </div>
+                      <Hits hitComponent={Hit} />
+                    </div>
+                  </div>
                 </div>
-              )}
+              </div>
             </Transition>
           </section>
         </div>
@@ -142,7 +142,7 @@ function Hit({ hit }: { hit: AlgoliaHit }) {
         <Highlight attribute='review.review' hit={hit} />
       </span>
       <Link href={`/politruc/${hit.slug}`}>
-        <a style={{ float: 'right', display: 'inline-block', marginRight: 10 }}>
+        <a className='float-right inline-block mr-0'>
           <ArrowRightCircle />
         </a>
       </Link>

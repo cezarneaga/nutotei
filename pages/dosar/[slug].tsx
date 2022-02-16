@@ -9,12 +9,12 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Layout from 'components/layout'
 
-import { getTickBySlug, getAllTicksWithSlugs } from 'lib/api'
+import { getAniBySlug, getAllAniWithSlugs } from 'lib/api'
 import { Candidate } from '../../lib/contentTypes'
 import { Facebook } from 'react-feather'
 type Props = {
-  tick: Candidate
-  moreTicks: Candidate[]
+  ani: Candidate
+  moreAnis: Candidate[]
   preview: boolean
 }
 
@@ -29,10 +29,10 @@ const options = {
     [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: ReactNode) => <Text>{children}</Text>,
   },
 }
-export default function Candidat({ tick, moreTicks, preview }: Props) {
+export default function Candidat({ ani, moreAnis, preview }: Props) {
   const router = useRouter()
 
-  if (!router.isFallback && !tick) {
+  if (!router.isFallback && !ani) {
     return <ErrorPage statusCode={404} />
   }
   return (
@@ -42,39 +42,39 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
       ) : (
         <>
           <NextSeo
-            title={`${tick?.name} - Nu tot ei!`}
-            description={tick?.review}
-            canonical={`https://nutotei.ro/capusa/${tick?.slug}`}
+            title={`${ani?.name} - Nu tot ei!`}
+            description={ani?.review}
+            canonical={`https://nutotei.ro/dosar/${ani?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/capusa/${tick?.slug}`,
-              title: `${tick?.name} - Nu tot ei!`,
-              description: tick?.review,
-              images: [tick?.mainImage],
+              url: `https://nutotei.ro/dosar/${ani?.slug}`,
+              title: `${ani?.name} - Nu tot ei!`,
+              description: ani?.review,
+              images: [ani?.mainImage],
             }}
           />
           <ArticleJsonLd
-            url={`https://nutotei.ro/capusa/${tick?.slug}`}
-            title={tick?.name}
-            images={[tick?.mainImage.url]}
-            datePublished={tick?.sys.firstPublishedAt}
-            dateModified={tick?.sys.firstPublishedAt}
+            url={`https://nutotei.ro/dosar/${ani?.slug}`}
+            title={ani?.name}
+            images={[ani?.mainImage.url]}
+            datePublished={ani?.sys.firstPublishedAt}
+            dateModified={ani?.sys.firstPublishedAt}
             authorName={['Valeriu Nicolae']}
             publisherName='Valeriu Nicolae'
             publisherLogo=''
-            description={tick?.review}
+            description={ani?.review}
           />
           <article>
             <Head>
-              <title>{tick.name} | Nu tot ei!</title>
-              <meta property='og:image' content={tick?.mainImage.url} />
+              <title>{ani.name} | Nu tot ei!</title>
+              <meta property='og:image' content={ani?.mainImage.url} />
             </Head>
 
             <div className='bg-white overflow-hidden'>
               <div className='relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
                 <div className='hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen'></div>
                 <div className='mx-auto text-base max-w-prose lg:max-w-none'>
-                  <h2 className='text-base text-red-600 font-semibold tracking-wide uppercase'>{tick.party}</h2>
-                  <h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>{tick.name}</h3>
+                  <h2 className='text-base text-red-600 font-semibold tracking-wide uppercase'>{ani.party}</h2>
+                  <h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>{ani.name}</h3>
                 </div>
                 <div className='mt-8 lg:grid lg:grid-cols-2 lg:gap-8'>
                   <div className='relative lg:row-start-1 lg:col-start-2'>
@@ -105,17 +105,17 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                         <div className='aspect-w-12 aspect-h-7 lg:aspect-none'>
                           <Image
                             className='rounded-lg shadow-lg object-cover object-center'
-                            src={tick.mainImage.url}
-                            alt={tick.mainImage.title}
+                            src={ani.mainImage.url}
+                            alt={ani.mainImage.title}
                             width={1184}
                             height={1376}
                             layout='responsive'
                           />
                         </div>
                         <figcaption className='mt-3 flex flex-col text-sm text-gray-500'>
-                          {tick.facebookLink && (
+                          {ani.facebookLink && (
                             <a
-                              href={tick.facebookLink}
+                              href={ani.facebookLink}
                               target='_blank'
                               rel='noopener noreferrer'
                               title='Sursa Facebook'
@@ -139,7 +139,7 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                               </svg>
                             </a>
                           )}
-                          {tick?.documentsCollection?.items.map((cv) => (
+                          {ani?.documentsCollection?.items.map((cv) => (
                             <a
                               key={cv.fileName}
                               href={cv.url}
@@ -185,10 +185,10 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
                   </div>
                   <div className='mt-8 lg:mt-0'>
                     <div className='text-base max-w-prose mx-auto lg:max-w-none'>
-                      <strong className='text-lg text-gray-500'>{tick.review}</strong>
+                      <strong className='text-lg text-gray-500'>{ani.review}</strong>
                     </div>
                     <div className='mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1'>
-                      {tick.content.json && documentToReactComponents(tick.content.json, options)}
+                      {ani.content.json && documentToReactComponents(ani.content.json, options)}
                     </div>
                   </div>
                 </div>
@@ -208,21 +208,21 @@ export async function getStaticProps({
   preview: boolean
 }) {
   const { slug } = params
-  const { tick, moreTicks } = await getTickBySlug(slug, 4, preview)
+  const { ani, moreAnis } = await getAniBySlug(slug, 4, preview)
 
   return {
     props: {
       preview,
-      tick,
-      moreTicks,
+      ani,
+      moreAnis,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const allTicks: Candidate[] = await getAllTicksWithSlugs()
+  const allAnis: Candidate[] = await getAllAniWithSlugs()
   return {
-    paths: allTicks?.map(({ slug }) => `/capusa/${slug}`),
+    paths: allAnis?.map(({ slug }) => `/dosar/${slug}`),
     fallback: true,
   }
 }

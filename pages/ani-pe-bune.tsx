@@ -6,8 +6,8 @@ import useSWRInfinite from 'swr/infinite'
 import Layout from 'components/layout'
 import { LatestTicks } from 'components/latest-ticks'
 import { CandidateCard } from 'components/candidate-card'
-import { TicksHeader } from 'components/ticks-header'
-import { getTicks, swrFetcher } from 'lib/api'
+import { AniHeader } from 'components/ani-header'
+import { getAnis, swrFetcher } from 'lib/api'
 import { Candidate } from 'lib/contentTypes'
 type Props = {
   latest: Candidate[]
@@ -20,7 +20,7 @@ export default function Candidat({ latest, older, total, preview }: Props) {
   const router = useRouter()
 
   const { data, error, size, setSize } = useSWRInfinite((index) => {
-    return `{tickCollection( order: sys_firstPublishedAt_DESC, limit: ${limit}, skip: ${index * limit + 6}) {
+    return `{aniPeBuneCollection( order: sys_firstPublishedAt_DESC, limit: ${limit}, skip: ${index * limit + 6}) {
         items {
           sys {
             id
@@ -56,18 +56,18 @@ export default function Candidat({ latest, older, total, preview }: Props) {
       ) : (
         <>
           <NextSeo
-            title={`România căpușată - Nu tot ei!`}
+            title={`ANI pe bune - Nu tot ei!`}
             description={`Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`}
-            canonical={`https://nutotei.ro/capuse`}
+            canonical={`https://nutotei.ro/ani-pe-bune`}
             openGraph={{
-              url: `https://nutotei.ro/capuse`,
-              title: `România căpușată - Nu tot ei!`,
+              url: `https://nutotei.ro/ani-pe-bune`,
+              title: `ANI pe bune - Nu tot ei!`,
               description: `Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`,
-              images: latest?.map((tick) => tick.mainImage),
+              images: latest?.map((ani) => ani.mainImage),
             }}
           />
-          <TicksHeader number={total} />
-          <LatestTicks candidates={latest} type='capusa' />
+          <AniHeader number={total} />
+          <LatestTicks candidates={latest} type='dosar' />
           {older.length > 0 && (
             <div className='bg-white'>
               <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
@@ -121,9 +121,9 @@ export default function Candidat({ latest, older, total, preview }: Props) {
   )
 }
 export async function getStaticProps({ preview = false }: { preview: boolean }) {
-  const ticks = await getTicks(6, preview)
-  const [latest, older] = splitAt(4, ticks)
-  const total = ticks.length
+  const anis = await getAnis(6, preview)
+  const [latest, older] = splitAt(4, anis)
+  const total = anis.length
   return {
     props: {
       preview,
