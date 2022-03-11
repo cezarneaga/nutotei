@@ -47,4 +47,3 @@ yarn start
 - Mihai Sampaleanu
 - Bogdan Iasinovschi
 - Alex Pausan
-- Catalin Apostu
