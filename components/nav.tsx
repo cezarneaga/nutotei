@@ -59,7 +59,7 @@ export function Nav() {
                   activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
                 } hover:text-gray-900 dark:hover:text-gray-100`}
               >
-                A.N.I. <sub className='font-normal italic text-sm text-red-600'>pe bune</sub>
+                Integritate <sub className='font-normal italic text-sm text-red-600'>pe bune</sub>
               </span>
             </Link>
             <div className='relative'>
@@ -129,7 +129,7 @@ export function Nav() {
                 </div>
               </Transition>
             </div>
-            <Link href='/harta/bucuresti' passHref>
+            {/* <Link href='/harta/bucuresti' passHref>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
@@ -137,7 +137,7 @@ export function Nav() {
               >
                 Harta
               </span>
-            </Link>
+            </Link> */}
             <Link href='/despre' passHref>
               <span
                 className={`text-base cursor-pointer font-medium ${
@@ -172,7 +172,7 @@ export function Nav() {
                 <Link href='/ani-pe-bune' passHref>
                   <div className='flex items-center'>
                     <h1 className='font-thin text-3xl '>
-                      A.N.I. <sub className='font-normal text-sm text-red-600 italic'>pe bune</sub>
+                      Integritate <sub className='font-normal text-sm text-red-600 italic'>pe bune</sub>
                     </h1>
                     <ArrowRightCircle className='ml-4 text-gray-400' />
                   </div>
