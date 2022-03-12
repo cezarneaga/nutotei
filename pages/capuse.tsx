@@ -58,9 +58,9 @@ export default function Candidat({ latest, older, total, preview }: Props) {
           <NextSeo
             title={`România căpușată - Integritate pe bune`}
             description={`Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`}
-            canonical={`https://nutotei.ro/capuse`}
+            canonical={`https://integritatepebune.ro/capuse`}
             openGraph={{
-              url: `https://nutotei.ro/capuse`,
+              url: `https://integritatepebune.ro/capuse`,
               title: `România căpușată - Integritate pe bune`,
               description: `Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`,
               images: latest?.map((tick) => tick.mainImage),

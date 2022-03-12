@@ -13,7 +13,7 @@ module.exports = {
         source: '/_hive/:slug',
         destination: 'https://hive.splitbee.io/:slug',
       },
-      { source: '/candidat/:slug*', destination: 'https://nutotei.ro/politruc/:slug*' },
+      { source: '/candidat/:slug*', destination: 'https://integritatepebune.ro/politruc/:slug*' },
     ]
   },
 }

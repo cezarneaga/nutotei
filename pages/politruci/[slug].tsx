@@ -62,9 +62,9 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
           <NextSeo
             title={`De la ${category.partyShort} - Integritate pe bune`}
             description={category?.party}
-            canonical={`https://nutotei.ro/politruci/${category?.slug}`}
+            canonical={`https://integritatepebune.ro/politruci/${category?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/politruci/${category?.slug}`,
+              url: `https://integritatepebune.ro/politruci/${category?.slug}`,
               title: `De la ${category?.partyShort} - Integritate pe bune`,
               description: category?.party,
               images: latest?.map((candidate) => candidate.mainImage),

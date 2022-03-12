@@ -27,12 +27,12 @@ export default function IndexPage({
       <NextSeo
         title={`Integritate pe bune`}
         description={`Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`}
-        canonical={`https://nutotei.ro`}
+        canonical={`https://integritatepebune.ro`}
         openGraph={{
-          url: `https://nutotei.ro`,
+          url: `https://integritatepebune.ro`,
           title: `Integritate pe bune`,
           description: `Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`,
-          images: [{ url: 'https://nutotei.ro/images/nutotei.png' }],
+          images: [{ url: 'https://integritatepebune.ro/images/nutotei.png' }],
         }}
       />
       <Hero />

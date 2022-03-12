@@ -22,9 +22,9 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
       <NextSeo
         title={`${page?.title} - Integritate pe bune`}
         description={`${page?.subtitle}`}
-        canonical={`https://nutotei.ro/${page?.slug}`}
+        canonical={`https://integritatepebune.ro/${page?.slug}`}
         openGraph={{
-          url: `https://nutotei.ro/${page?.slug}`,
+          url: `https://integritatepebune.ro/${page?.slug}`,
           title: `${page?.title} - Integritate pe bune`,
           description: `${page?.subtitle}`,
           images: [page?.photo],

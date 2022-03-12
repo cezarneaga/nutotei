@@ -44,16 +44,16 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
           <NextSeo
             title={`${tick?.name} - Integritate pe bune`}
             description={tick?.review}
-            canonical={`https://nutotei.ro/capusa/${tick?.slug}`}
+            canonical={`https://integritatepebune.ro/capusa/${tick?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/capusa/${tick?.slug}`,
+              url: `https://integritatepebune.ro/capusa/${tick?.slug}`,
               title: `${tick?.name} - Integritate pe bune`,
               description: tick?.review,
               images: [tick?.mainImage],
             }}
           />
           <ArticleJsonLd
-            url={`https://nutotei.ro/capusa/${tick?.slug}`}
+            url={`https://integritatepebune.ro/capusa/${tick?.slug}`}
             title={tick?.name}
             images={[tick?.mainImage.url]}
             datePublished={tick?.sys.firstPublishedAt}

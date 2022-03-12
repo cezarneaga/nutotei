@@ -44,16 +44,16 @@ export default function Candidat({ ani, moreAnis, preview }: Props) {
           <NextSeo
             title={`${ani?.name} - Integritate pe bune`}
             description={ani?.review}
-            canonical={`https://nutotei.ro/dosar/${ani?.slug}`}
+            canonical={`https://integritatepebune.ro/dosar/${ani?.slug}`}
             openGraph={{
-              url: `https://nutotei.ro/dosar/${ani?.slug}`,
+              url: `https://integritatepebune.ro/dosar/${ani?.slug}`,
               title: `${ani?.name} - Integritate pe bune`,
               description: ani?.review,
               images: [ani?.mainImage],
             }}
           />
           <ArticleJsonLd
-            url={`https://nutotei.ro/dosar/${ani?.slug}`}
+            url={`https://integritatepebune.ro/dosar/${ani?.slug}`}
             title={ani?.name}
             images={[ani?.mainImage.url]}
             datePublished={ani?.sys.firstPublishedAt}

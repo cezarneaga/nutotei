@@ -60,12 +60,12 @@ export default function IndexPage({
           <NextSeo
             title={`Harta - Integritate pe bune`}
             description={`Harta pe judete`}
-            canonical={`https://nutotei.ro/harta/${slug}`}
+            canonical={`https://integritatepebune.ro/harta/${slug}`}
             openGraph={{
-              url: `https://nutotei.ro/harta/${slug}`,
+              url: `https://integritatepebune.ro/harta/${slug}`,
               title: `Harta - Integritate pe bune`,
               description: `Harta pe judete`,
-              images: [{ url: 'https://nutotei.ro/images/nutotei.png' }],
+              images: [{ url: 'https://integritatepebune.ro/images/nutotei.png' }],
             }}
           />
           <div className='relative pt-6'>
