@@ -10,17 +10,21 @@ export default function IndexPage({
   latestCandidates,
   psdCandidates,
   pnlCandidates,
-  pmpCandidates,
-  proCandidates,
-  aldeCandidates,
+  usrCandidates,
+  aurCandidates,
+  udmrCandidates,
+  minoritatiCandidates,
+  neafiliatiCandidates,
 }: {
   preview: boolean
   latestCandidates: Candidate[]
   psdCandidates: Candidate[]
   pnlCandidates: Candidate[]
-  pmpCandidates: Candidate[]
-  proCandidates: Candidate[]
-  aldeCandidates: Candidate[]
+  usrCandidates: Candidate[]
+  aurCandidates: Candidate[]
+  udmrCandidates: Candidate[]
+  minoritatiCandidates: Candidate[]
+  neafiliatiCandidates: Candidate[]
 }) {
   return (
     <Layout preview={preview}>
@@ -39,9 +43,11 @@ export default function IndexPage({
       <Latest candidates={latestCandidates} />
       <LatestParty candidates={psdCandidates} slug='psd' />
       <LatestParty candidates={pnlCandidates} slug='pnl' />
-      <LatestParty candidates={pmpCandidates} slug='pmp' />
-      <LatestParty candidates={proCandidates} slug='pro-romania' />
-      <LatestParty candidates={aldeCandidates} slug='alde' />
+      <LatestParty candidates={usrCandidates} slug='usr' />
+      <LatestParty candidates={aurCandidates} slug='aur' />
+      <LatestParty candidates={udmrCandidates} slug='udmr' />
+      <LatestParty candidates={minoritatiCandidates} slug='minoritati' />
+      <LatestParty candidates={neafiliatiCandidates} slug='neafiliati' />
     </Layout>
   )
 }
@@ -50,18 +56,22 @@ export async function getStaticProps({ preview = false }) {
   const latestCandidates = await getCandidates(4, preview)
   const psdCandidates = await getCandidatesByParty('PSD', 6, preview)
   const pnlCandidates = await getCandidatesByParty('PNL', 6, preview)
-  const pmpCandidates = await getCandidatesByParty('PMP', 4, preview)
-  const proCandidates = await getCandidatesByParty('PRO Romania', 4, preview)
-  const aldeCandidates = await getCandidatesByParty('ALDE', 4, preview)
+  const usrCandidates = await getCandidatesByParty('USR', 4, preview)
+  const aurCandidates = await getCandidatesByParty('AUR', 4, preview)
+  const udmrCandidates = await getCandidatesByParty('UDMR', 4, preview)
+  const minoritatiCandidates = await getCandidatesByParty('Minorități', 4, preview)
+  const neafiliatiCandidates = await getCandidatesByParty('Neafiliați', 4, preview)
   return {
     props: {
       preview,
       latestCandidates,
       psdCandidates,
       pnlCandidates,
-      pmpCandidates,
-      proCandidates,
-      aldeCandidates,
+      usrCandidates,
+      aurCandidates,
+      udmrCandidates,
+      minoritatiCandidates,
+      neafiliatiCandidates,
     },
   }
 }

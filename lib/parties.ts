@@ -15,18 +15,28 @@ export const parties: Party[] = [
     slug: 'pnl',
   },
   {
-    partyShort: 'PMP',
-    party: 'Partidul Mișcarea Populară',
-    slug: 'pmp',
+    partyShort: 'USR',
+    party: 'Uniunea Salvaţi România',
+    slug: 'usr',
   },
   {
-    partyShort: 'PRO Romania',
-    party: 'PRO Romania Social Liberal',
-    slug: 'pro-romania',
+    partyShort: 'AUR',
+    party: 'Alianța pentru Unirea Românilor',
+    slug: 'aur',
   },
   {
-    partyShort: 'ALDE',
-    party: 'Partidul Alianța Liberalilor și Democraților',
-    slug: 'alde',
+    partyShort: 'UDMR',
+    party: 'Uniunea Democrată Maghiară din România',
+    slug: 'udmr',
+  },
+  {
+    partyShort: 'Minorități',
+    party: 'Minorități Naționale',
+    slug: 'minoritati',
+  },
+  {
+    partyShort: 'Neafiliaţi',
+    party: 'Neafiliaţi',
+    slug: 'neafiliati',
   },
 ]
