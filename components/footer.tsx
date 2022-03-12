@@ -16,7 +16,7 @@ export function Footer() {
           </a>
         </div>
         <div className='mt-8 md:mt-0 md:order-1'>
-          <p className='text-center text-base text-gray-700'>&copy; {year} Valeriu Nicolae</p>
+          <p className='text-center text-base text-gray-700'>&copy; {year} Integritate pe bune</p>
         </div>
         <div className='mt-8 md:mt-0 md:order-2'>
           <p className='text-center text-base text-gray-700'>
