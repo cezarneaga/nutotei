@@ -42,12 +42,12 @@ export default function Candidat({ ani, moreAnis, preview }: Props) {
       ) : (
         <>
           <NextSeo
-            title={`${ani?.name} - Nu tot ei!`}
+            title={`${ani?.name} - Integritate pe bune`}
             description={ani?.review}
             canonical={`https://nutotei.ro/dosar/${ani?.slug}`}
             openGraph={{
               url: `https://nutotei.ro/dosar/${ani?.slug}`,
-              title: `${ani?.name} - Nu tot ei!`,
+              title: `${ani?.name} - Integritate pe bune`,
               description: ani?.review,
               images: [ani?.mainImage],
             }}
@@ -65,7 +65,7 @@ export default function Candidat({ ani, moreAnis, preview }: Props) {
           />
           <article>
             <Head>
-              <title>{ani.name} | Nu tot ei!</title>
+              <title>{ani.name} | Integritate pe bune</title>
               <meta property='og:image' content={ani?.mainImage.url} />
             </Head>
 

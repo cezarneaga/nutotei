@@ -25,12 +25,12 @@ export default function IndexPage({
   return (
     <Layout preview={preview}>
       <NextSeo
-        title={`Nu tot ei! - Valeriu Nicolae`}
+        title={`Integritate pe bune`}
         description={`Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`}
         canonical={`https://nutotei.ro`}
         openGraph={{
           url: `https://nutotei.ro`,
-          title: `Nu tot ei! - Valeriu Nicolae`,
+          title: `Integritate pe bune`,
           description: `Pentru că impostura, nepotismul, nesimțirea și corupția sunt coloana vertebrală a clasei noastre politice. Și pentru că putem să îi schimbăm. Pentru că trebuie să o facem. Pentru că avem nevoie de decență, bun simț, meritocrație si oameni care au făcut ceva nu oameni care promit că vor face ceva în politică.`,
           images: [{ url: 'https://nutotei.ro/images/nutotei.png' }],
         }}

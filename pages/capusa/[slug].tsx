@@ -42,12 +42,12 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
       ) : (
         <>
           <NextSeo
-            title={`${tick?.name} - Nu tot ei!`}
+            title={`${tick?.name} - Integritate pe bune`}
             description={tick?.review}
             canonical={`https://nutotei.ro/capusa/${tick?.slug}`}
             openGraph={{
               url: `https://nutotei.ro/capusa/${tick?.slug}`,
-              title: `${tick?.name} - Nu tot ei!`,
+              title: `${tick?.name} - Integritate pe bune`,
               description: tick?.review,
               images: [tick?.mainImage],
             }}
@@ -65,7 +65,7 @@ export default function Candidat({ tick, moreTicks, preview }: Props) {
           />
           <article>
             <Head>
-              <title>{tick.name} | Nu tot ei!</title>
+              <title>{tick.name} | Integritate pe bune</title>
               <meta property='og:image' content={tick?.mainImage.url} />
             </Head>
 

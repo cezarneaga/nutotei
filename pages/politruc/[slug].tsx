@@ -42,12 +42,12 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
       ) : (
         <>
           <NextSeo
-            title={`${candidate?.name} - Nu tot ei!`}
+            title={`${candidate?.name} - Integritate pe bune`}
             description={candidate?.review}
             canonical={`https://nutotei.ro/politruc/${candidate?.slug}`}
             openGraph={{
               url: `https://nutotei.ro/politruc/${candidate?.slug}`,
-              title: `${candidate?.name} - Nu tot ei!`,
+              title: `${candidate?.name} - Integritate pe bune`,
               description: candidate?.review,
               images: [candidate?.mainImage],
             }}
@@ -65,7 +65,7 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
           />
           <article>
             <Head>
-              <title>{candidate.name} | Nu tot ei!</title>
+              <title>{candidate.name} | Integritate pe bune</title>
               <meta property='og:image' content={candidate?.mainImage.url} />
             </Head>
 
@@ -86,7 +86,8 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                       height='384'
                       fill='none'
                       viewBox='0 0 404 384'
-                      aria-hidden='true'>
+                      aria-hidden='true'
+                    >
                       <defs>
                         <pattern
                           id='de316486-4a29-4312-bdfc-fbce2132a2c1'
@@ -94,7 +95,8 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                           y='0'
                           width='20'
                           height='20'
-                          patternUnits='userSpaceOnUse'>
+                          patternUnits='userSpaceOnUse'
+                        >
                           <rect x='0' y='0' width='4' height='4' className='text-gray-200' fill='currentColor' />
                         </pattern>
                       </defs>
@@ -119,7 +121,8 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                               target='_blank'
                               rel='noopener noreferrer'
                               title='Sursa Facebook'
-                              className='text-blue-600 flex hover:text-blue-700 cursor-pointer clickable h-4'>
+                              className='text-blue-600 flex hover:text-blue-700 cursor-pointer clickable h-4'
+                            >
                               <Facebook size={18} className='inline' />
                               <span className='ml-2 my-auto inline'>Sursa articolului pe facebook</span>
                               <svg
@@ -127,7 +130,8 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                className='pl-2'>
+                                className='pl-2'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
@@ -144,13 +148,15 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                               target='_blank'
                               rel='noreferrer noopener'
                               className='mt-4 text-red-700 flex hover:text-red-800 cursor-pointer clickable h-4'
-                              title={`Sursa CV - ${cv.title}`}>
+                              title={`Sursa CV - ${cv.title}`}
+                            >
                               <svg
                                 className='w-5 h-5'
                                 xmlns='http://www.w3.org/2000/svg'
                                 fill='none'
                                 viewBox='0 0 24 24'
-                                stroke='currentColor'>
+                                stroke='currentColor'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
@@ -164,7 +170,8 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
                                 fill='none'
                                 viewBox='0 0 24 24'
                                 stroke='currentColor'
-                                className='pl-2'>
+                                className='pl-2'
+                              >
                                 <path
                                   strokeLinecap='round'
                                   strokeLinejoin='round'
