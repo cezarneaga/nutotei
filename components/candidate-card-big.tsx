@@ -26,7 +26,7 @@ export function CandidateCardBig({ candidate, type }: { candidate: Candidate; ty
               <a title={candidate.name}>{candidate.name}</a>
             </Link>
           </h3>
-          <p className='text-red-600'>{candidate.party}</p>
+          <p className='text-[#f5c646]'>{candidate.party}</p>
         </div>
         <div className='text-lg'>
           <p className='text-gray-500'>{candidate.review.substring(0, 180)}...</p>
@@ -40,7 +40,8 @@ export function CandidateCardBig({ candidate, type }: { candidate: Candidate; ty
                 target='_blank'
                 rel='noopener noreferrer'
                 title='Sursa Facebook'
-                className='text-gray-400 hover:text-gray-500 cursor-pointer clickable'>
+                className='text-gray-400 hover:text-gray-500 cursor-pointer clickable'
+              >
                 <span className='sr-only'>Sursa Facebook</span>
                 <Facebook size={18} />
               </a>
@@ -53,7 +54,8 @@ export function CandidateCardBig({ candidate, type }: { candidate: Candidate; ty
                 target='_blank'
                 title={`Sursa CV - ${document.title}`}
                 rel='noopener noreferrer'
-                className='text-gray-400 hover:text-gray-500 cursor-pointer clickable'>
+                className='text-gray-400 hover:text-gray-500 cursor-pointer clickable'
+              >
                 <span className='sr-only'>Sursa CV - {document.title}</span>
                 <svg className='w-5 h-5' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                   <path

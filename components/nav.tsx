@@ -29,7 +29,7 @@ export function Nav() {
             <Link href='/' passHref>
               <h1 className='text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer'>
                 <span className='inline'>Integritate </span>
-                <span className='text-red-600 inline'>pe bune</span>
+                <span className='text-[#f5c646] inline'>pe bune</span>
               </h1>
             </Link>
           </div>
@@ -59,7 +59,7 @@ export function Nav() {
                   activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
                 } hover:text-gray-900 dark:hover:text-gray-100`}
               >
-                Integritate <sub className='font-normal italic text-sm text-red-600'>pe bune</sub>
+                Integritate <sub className='font-normal italic text-sm text-[#f5c646]'>pe bune</sub>
               </span>
             </Link>
             <div className='relative'>
@@ -172,7 +172,7 @@ export function Nav() {
                 <Link href='/ani-pe-bune' passHref>
                   <div className='flex items-center'>
                     <h1 className='font-thin text-3xl '>
-                      Integritate <sub className='font-normal text-sm text-red-600 italic'>pe bune</sub>
+                      Integritate <sub className='font-normal text-sm text-[#f5c646] italic'>pe bune</sub>
                     </h1>
                     <ArrowRightCircle className='ml-4 text-gray-400' />
                   </div>

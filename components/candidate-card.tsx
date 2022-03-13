@@ -25,7 +25,7 @@ export function CandidateCard({ candidate, type }: { candidate: Candidate; type:
               <a title={candidate.name}>{candidate.name}</a>
             </Link>
           </h3>
-          <p className='text-red-600 truncate'>{candidate.review.substring(0, 20)}...</p>
+          <p className='text-[#f5c646] truncate'>{candidate.review.substring(0, 20)}...</p>
         </div>
       </div>
     </li>

@@ -73,7 +73,7 @@ export default function Candidat({ candidate, moreCandidates, preview }: Props) 
               <div className='relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
                 <div className='hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen'></div>
                 <div className='mx-auto text-base max-w-prose lg:max-w-none'>
-                  <h2 className='text-base text-red-600 font-semibold tracking-wide uppercase'>{candidate.party}</h2>
+                  <h2 className='text-base text-[#f5c646] font-semibold tracking-wide uppercase'>{candidate.party}</h2>
                   <h3 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
                     {candidate.name}
                   </h3>

@@ -86,7 +86,7 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                     <div className='mt-8 rounded-md shadow sm:mt-4 '>
                       <a
                         href='mailto:valeriu@nutotei.ro'
-                        className='w-full md:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'
+                        className='w-full md:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#f5c646] bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'
                       >
                         Trimite-ne CV-uri
                       </a>
@@ -102,7 +102,7 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                       ))}
                     </ul>
                     <button
-                      className='mt-12 w-full md:w-auto md:mx-auto flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-red-600 border-red-600 hover:bg-gray-100 md:py-2 md:text-lg md:px-4'
+                      className='mt-12 w-full md:w-auto md:mx-auto flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-[#f5c646] border-red-600 hover:bg-gray-100 md:py-2 md:text-lg md:px-4'
                       disabled={typeof window !== 'undefined' ? isLoadingMore || isReachingEnd : true}
                       onClick={() => setSize(size + 1)}
                     >
