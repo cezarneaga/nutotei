@@ -5,6 +5,7 @@ import { Latest } from 'components/latest'
 import { LatestParty } from 'components/latest-party'
 import { getCandidates, getCandidatesByParty } from '../lib/api'
 import { Candidate } from '../lib/contentTypes'
+import Script from 'next/script'
 export default function IndexPage({
   preview,
   latestCandidates,
@@ -39,39 +40,31 @@ export default function IndexPage({
           images: [{ url: 'https://integritatepebune.ro/images/nutotei.png' }],
         }}
       />
-      <Hero />
-      <Latest candidates={latestCandidates} />
-      <LatestParty candidates={psdCandidates} slug='psd' />
-      <LatestParty candidates={pnlCandidates} slug='pnl' />
-      <LatestParty candidates={usrCandidates} slug='usr' />
-      <LatestParty candidates={aurCandidates} slug='aur' />
-      <LatestParty candidates={udmrCandidates} slug='udmr' />
-      <LatestParty candidates={minoritatiCandidates} slug='minoritati' />
-      <LatestParty candidates={neafiliatiCandidates} slug='neafiliati' />
+      <div className='bg-white'>
+        <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
+          <div
+            className='infogram-embed'
+            data-id='e40976ae-691a-474d-a27a-bb8a121fde59'
+            data-type='interactive'
+            data-title='Raport 1 v6'
+          ></div>
+          <Script
+            id='embed-infogram'
+            strategy='afterInteractive'
+            dangerouslySetInnerHTML={{
+              __html: `
+                !function(e,i,n,s){var t="InfogramEmbeds",d=e.getElementsByTagName("script")[0];if(window[t]&&window[t].initialized)window[t].process&&window[t].process();else if(!e.getElementById(n)){var o=e.createElement("script");o.async=1,o.id=n,o.src="https://e.infogram.com/js/dist/embed-loader-min.js",d.parentNode.insertBefore(o,d)}}(document,0,"infogram-async");
+              `,
+            }}
+            onLoad={() => {
+              console.log('Embedded infogram')
+            }}
+            onError={(e) => {
+              console.log('error: ', e)
+            }}
+          />
+        </div>
+      </div>
     </Layout>
   )
-}
-
-export async function getStaticProps({ preview = false }) {
-  const latestCandidates = await getCandidates(4, preview)
-  const psdCandidates = await getCandidatesByParty('PSD', 6, preview)
-  const pnlCandidates = await getCandidatesByParty('PNL', 6, preview)
-  const usrCandidates = await getCandidatesByParty('USR', 4, preview)
-  const aurCandidates = await getCandidatesByParty('AUR', 4, preview)
-  const udmrCandidates = await getCandidatesByParty('UDMR', 4, preview)
-  const minoritatiCandidates = await getCandidatesByParty('Minorități', 4, preview)
-  const neafiliatiCandidates = await getCandidatesByParty('Neafiliați', 4, preview)
-  return {
-    props: {
-      preview,
-      latestCandidates,
-      psdCandidates,
-      pnlCandidates,
-      usrCandidates,
-      aurCandidates,
-      udmrCandidates,
-      minoritatiCandidates,
-      neafiliatiCandidates,
-    },
-  }
 }
