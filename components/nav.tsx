@@ -28,8 +28,8 @@ export function Nav() {
           <div className='flex justify-start lg:w-0 lg:flex-1'>
             <Link href='/' passHref>
               <h1 className='text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer'>
-                <span className='inline'>Nu </span>
-                <span className='text-red-600 inline'>tot ei</span>
+                <span className='inline'>Integritate </span>
+                <span className='text-red-600 inline'>pe bune</span>
               </h1>
             </Link>
           </div>
