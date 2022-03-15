@@ -28,9 +28,7 @@ export function Nav() {
           <div className='flex justify-start lg:w-0 lg:flex-1'>
             <Link href='/' passHref>
               <h1 className='text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer'>
-                <Image src={`/images/profile.png`} height={65} width={65} alt={'logo'} />
-                <span className='inline'>Integritate </span>
-                <span className='text-[#f5c646] inline'>pe bune</span>
+                <Image src={`/images/profile.png`} height={65} width={313} alt={'logo'} />
               </h1>
             </Link>
           </div>
