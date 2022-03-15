@@ -1,32 +1,8 @@
 import { NextSeo } from 'next-seo'
 import Layout from 'components/layout'
-import { Hero } from 'components/hero'
-import { Latest } from 'components/latest'
-import { LatestParty } from 'components/latest-party'
-import { getCandidates, getCandidatesByParty } from '../lib/api'
-import { Candidate } from '../lib/contentTypes'
 import Script from 'next/script'
-export default function IndexPage({
-  preview,
-  latestCandidates,
-  psdCandidates,
-  pnlCandidates,
-  usrCandidates,
-  aurCandidates,
-  udmrCandidates,
-  minoritatiCandidates,
-  neafiliatiCandidates,
-}: {
-  preview: boolean
-  latestCandidates: Candidate[]
-  psdCandidates: Candidate[]
-  pnlCandidates: Candidate[]
-  usrCandidates: Candidate[]
-  aurCandidates: Candidate[]
-  udmrCandidates: Candidate[]
-  minoritatiCandidates: Candidate[]
-  neafiliatiCandidates: Candidate[]
-}) {
+
+export default function IndexPage({ preview }: { preview: boolean }) {
   return (
     <Layout preview={preview}>
       <NextSeo
@@ -47,7 +23,7 @@ export default function IndexPage({
             data-id='e40976ae-691a-474d-a27a-bb8a121fde59'
             data-type='interactive'
             data-title='Raport 1 v6'
-          ></div>
+          />
           <Script
             id=''
             dangerouslySetInnerHTML={{
