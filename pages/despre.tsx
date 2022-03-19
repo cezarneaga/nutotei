@@ -56,7 +56,7 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
                 </div>
                 <div className='mt-3 rounded-md shadow sm:mt-0 sm:ml-3'>
                   <a
-                    href='mailto:valeriu@nutotei.ro'
+                    href='mailto:civic@asociatiacasabuna.ro'
                     className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-2 md:text-lg md:px-5'
                   >
                     Scrie-mi
