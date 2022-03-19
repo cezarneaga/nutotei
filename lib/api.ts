@@ -1,5 +1,5 @@
-import { operationsDoc, ticksDoc, aniDoc } from 'lib/queries'
 import { GraphQLClient } from 'graphql-request'
+import { operationsDoc, ticksDoc, aniDoc, reportsDoc } from 'lib/queries'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -148,6 +148,12 @@ export async function getPreviewProjectBySlug(slug: string) {
 }
 export async function getCountyById(id: string) {
   const entry = await fetchGraphQL(operationsDoc, 'County', { id }, true)
-
   return extractCounty(entry)
+}
+export async function getReports(limit: number) {
+  const entries = await fetchGraphQL(reportsDoc, 'Reports', { limit })
+  return extractReports(entries)
+}
+export function extractReports(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.reportCollection?.items || []
 }

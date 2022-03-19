@@ -340,3 +340,18 @@ fragment photoUrl on AniPeBune{
   }
 }
 `
+export const reportsDoc = `
+query Reports($limit: Int!) {
+  reportCollection(limit: $limit) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      id
+      name
+      order
+    }
+  }
+}
+`
