@@ -342,7 +342,7 @@ fragment photoUrl on AniPeBune{
 `
 export const reportsDoc = `
 query Reports($limit: Int!) {
-  reportCollection(limit: $limit) {
+  reportCollection(order: order_ASC, limit: $limit) {
     items {
       sys {
         id
