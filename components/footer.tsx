@@ -1,7 +1,29 @@
-export function Footer() {
+import Link from 'next/link'
+
+import { Legal } from 'lib/contentTypes'
+
+export function Footer({ legals }: { legals: Legal[] }) {
   const year = new Date().getFullYear()
   return (
     <footer className='bg-white'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>
+        <div className='mt-8 lg:mt-0'>
+          <div className='mt-2 text-xl leading-8 font-extrabold tracking-tight'>
+            <Link href='/' passHref>
+              <a>integritatepebune.ro</a>
+            </Link>
+          </div>
+          <div>
+            {legals?.map((legal) => (
+              <div key={legal.sys.id}>
+                <Link href={`/legal/${legal.slug}`}>
+                  <a>{legal.name}</a>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>
         <div className='flex justify-center space-x-6 md:order-2'>
           <a href='https://www.facebook.com/Integritatepebune' className='text-gray-700 hover:text-gray-500'>

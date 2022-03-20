@@ -346,11 +346,37 @@ query Reports($limit: Int!) {
     items {
       sys {
         id
+        publishedAt
         firstPublishedAt
       }
       id
       name
       order
+    }
+  }
+}
+`
+export const legalDoc = `
+query LegalBySlug($slug: String!) {
+  legalCollection(where: {slug: $slug}) {
+    items {
+      sys {
+        id
+        publishedAt
+        firstPublishedAt
+      }
+      name
+      slug
+      policy {
+        json
+      }
+    }
+  }
+}
+query AllLegalsWithSlugs {
+  legalCollection(where: { slug_exists: true }, order: order_ASC) {
+    items {
+      slug
     }
   }
 }

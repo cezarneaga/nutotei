@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
-import { operationsDoc, ticksDoc, aniDoc, reportsDoc } from 'lib/queries'
+import { operationsDoc, ticksDoc, aniDoc, reportsDoc, legalDoc } from 'lib/queries'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -160,4 +160,18 @@ export async function getReports(limit: number) {
 }
 export function extractReports(fetchResponse: { data: any }) {
   return fetchResponse?.data?.reportCollection?.items || []
+}
+export async function getLegalBySlug(slug: string) {
+  const entry = await fetchGraphQL(legalDoc, 'LegalBySlug', { slug })
+  return extractLegal(entry)
+}
+export function extractLegal(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.legalCollection?.items?.[0] || null
+}
+export async function getAllLegalsWithSlugs() {
+  const entries = await fetchGraphQL(legalDoc, 'AllLegalsWithSlugs')
+  return extractLegalEntries(entries)
+}
+export function extractLegalEntries(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.legalCollection?.items || []
 }
