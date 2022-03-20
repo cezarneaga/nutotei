@@ -7,7 +7,7 @@ import Layout from 'components/layout'
 import { LatestTicks } from 'components/latest-ticks'
 import { CandidateCard } from 'components/candidate-card'
 import { AniHeader } from 'components/ani-header'
-import { getAnis, swrFetcher } from 'lib/api'
+import { getAnis, candidatesFetcher } from 'lib/api'
 import { Candidate } from 'lib/contentTypes'
 type Props = {
   latest: Candidate[]
@@ -38,7 +38,7 @@ export default function Candidat({ latest, older, total, preview }: Props) {
         }
       }
     }`
-  }, swrFetcher)
+  }, candidatesFetcher)
   if (!router.isFallback && !latest) {
     return <ErrorPage statusCode={404} />
   }

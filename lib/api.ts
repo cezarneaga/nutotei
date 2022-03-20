@@ -12,9 +12,13 @@ export const swrFetcher = async (query: string) => {
       authorization: `Bearer ${publicToken}`,
     },
   })
-  const data = await graphQLClient.request(query)
+  return await graphQLClient.request(query)
+}
+export const candidatesFetcher = async (query: string) => {
+  const data = await swrFetcher(query)
   return await data.candidateCollection.items
 }
+
 export async function fetchGraphQL(
   query: string,
   operationName: string,
