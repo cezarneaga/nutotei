@@ -95,10 +95,10 @@ export default function Candidat({ latest, older, category, preview, total }: Pr
                   <div className='lg:col-span-2'>
                     <ul className='space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8'>
                       {older.map((candidate) => (
-                        <CandidateCard candidate={candidate} type='politruc' key={candidate.sys.id} />
+                        <CandidateCard candidate={candidate} type='dosar' key={candidate.sys.id} />
                       ))}
                       {candidates?.map((candidate: Candidate) => (
-                        <CandidateCard candidate={candidate} type='politruc' key={candidate.sys.id} />
+                        <CandidateCard candidate={candidate} type='dosar' key={candidate.sys.id} />
                       ))}
                     </ul>
                     <button
