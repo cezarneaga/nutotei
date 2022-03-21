@@ -340,6 +340,50 @@ fragment photoUrl on AniPeBune{
   }
 }
 `
+export const aniByPartyDoc = `
+query AniByParty($party: String!, $limit: Int!) {
+  aniPeBuneCollection(where: { party: $party }, order: sys_firstPublishedAt_DESC, limit: $limit) {
+    items {
+      sys {
+        id
+        publishedAt
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...photoUrl
+      content {
+        json
+      }
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
+        }
+      }
+      party
+      facebookLink
+      }
+  }
+}
+query AniTotalByParty($party: String!) {
+  aniPeBuneCollection(where: {party: $party}, limit: 4) {
+    total
+  }
+}
+fragment photoUrl on AniPeBune{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
 export const reportsDoc = `
 query Reports {
   reportCollection(order: order_ASC) {

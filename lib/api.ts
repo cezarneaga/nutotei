@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
-import { operationsDoc, ticksDoc, aniDoc, reportsDoc, legalDoc } from 'lib/queries'
+import { operationsDoc, ticksDoc, aniDoc, aniByPartyDoc, reportsDoc, legalDoc } from 'lib/queries'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -153,6 +153,14 @@ export async function getPreviewProjectBySlug(slug: string) {
 export async function getCountyById(id: string) {
   const entry = await fetchGraphQL(operationsDoc, 'County', { id }, true)
   return extractCounty(entry)
+}
+export async function getAniByParty(party: string, limit: number, preview: boolean) {
+  const entries = await fetchGraphQL(aniByPartyDoc, 'AniByParty', { party, limit, preview }, preview)
+  return extractAniEntries(entries)
+}
+export async function getAniTotalByParty(party: string) {
+  const { data } = await fetchGraphQL(aniByPartyDoc, 'AniTotalByParty', { party })
+  return data?.aniPeBuneCollection?.total || 0
 }
 export async function getReports() {
   const entries = await fetchGraphQL(reportsDoc, 'Reports')

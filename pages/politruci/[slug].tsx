@@ -7,7 +7,7 @@ import Layout from 'components/layout'
 import { Latest } from 'components/latest'
 import { CandidateCard } from 'components/candidate-card'
 import { CategoryHeader } from 'components/category-header'
-import { getCandidatesByParty, candidatesFetcher, getCandidatesTotalByParty } from 'lib/api'
+import { candidatesFetcher, getAniByParty, getAniTotalByParty } from 'lib/api'
 import { Candidate } from 'lib/contentTypes'
 import { parties, Party } from 'lib/parties'
 type Props = {
@@ -133,8 +133,8 @@ export async function getStaticProps({
 }) {
   const { slug } = params
   const category = parties.find((party) => party.slug === slug)!
-  const candidates = await getCandidatesByParty(category.partyShort, 6, preview)
-  const total = await getCandidatesTotalByParty(category.partyShort)
+  const candidates = await getAniByParty(category.partyShort, 6, preview)
+  const total = await getAniTotalByParty(category.partyShort)
   const [latest, older] = splitAt(4, candidates)
 
   return {
