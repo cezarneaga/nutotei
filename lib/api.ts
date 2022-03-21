@@ -154,8 +154,8 @@ export async function getCountyById(id: string) {
   const entry = await fetchGraphQL(operationsDoc, 'County', { id }, true)
   return extractCounty(entry)
 }
-export async function getReports(limit: number) {
-  const entries = await fetchGraphQL(reportsDoc, 'Reports', { limit })
+export async function getReports() {
+  const entries = await fetchGraphQL(reportsDoc, 'Reports')
   return extractReports(entries)
 }
 export function extractReports(fetchResponse: { data: any }) {

@@ -30,7 +30,7 @@ export default function IndexPage({ preview, reports }: { preview: boolean; repo
 }
 
 export async function getStaticProps({ preview = false }) {
-  const reports: Report[] = await getReports(6)
+  const reports: Report[] = await getReports()
 
   return {
     props: {
