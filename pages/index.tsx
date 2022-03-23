@@ -1,10 +1,18 @@
 import { NextSeo } from 'next-seo'
 import Layout from 'components/layout'
 import { ReportLoader } from 'components/report-loader'
-import { getReports } from '../lib/api'
-import { Report } from '../lib/contentTypes'
+import { getReports, getReportDocuments } from '../lib/api'
+import { Report, ReportDocument } from '../lib/contentTypes'
 
-export default function IndexPage({ preview, reports }: { preview: boolean; reports: Report[] }) {
+export default function IndexPage({
+  preview,
+  reports,
+  reportDocuments,
+}: {
+  preview: boolean
+  reports: Report[]
+  reportDocuments: ReportDocument[]
+}) {
   return (
     <Layout preview={preview}>
       <NextSeo
@@ -20,6 +28,18 @@ export default function IndexPage({ preview, reports }: { preview: boolean; repo
       />
       <div className='bg-white'>
         <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
+          <div className='mt-1 text-4xl font-bold sm:text-5xl sm:tracking-tight lg:text-6xl text-center'>
+            <a
+              id='report-pdf'
+              href={reportDocuments[0].document.url}
+              target='_blank'
+              title='Descarcă raportul în format PDF'
+              rel='noopener noreferrer'
+              style={{ color: '#4278b3' }}
+            >
+              <p>Descarcă raportul</p>
+            </a>
+          </div>
           {reports.map((report) => (
             <ReportLoader report={report} key={report.sys.id} />
           ))}
@@ -31,11 +51,13 @@ export default function IndexPage({ preview, reports }: { preview: boolean; repo
 
 export async function getStaticProps({ preview = false }) {
   const reports: Report[] = await getReports()
+  const reportDocuments: ReportDocument[] = await getReportDocuments()
 
   return {
     props: {
       preview,
       reports,
+      reportDocuments,
     },
   }
 }

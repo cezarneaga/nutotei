@@ -399,6 +399,25 @@ query Reports {
     }
   }
 }
+query ReportDocuments {
+  reportDocumentCollection {
+    items {
+      sys {
+        id
+        publishedAt
+        firstPublishedAt
+      }
+      name
+      document {
+        title
+        description
+        fileName
+        size
+        url
+      }
+    }
+  }
+}
 `
 export const legalDoc = `
 query LegalBySlug($slug: String!) {

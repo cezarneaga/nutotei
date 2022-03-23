@@ -169,6 +169,13 @@ export async function getReports() {
 export function extractReports(fetchResponse: { data: any }) {
   return fetchResponse?.data?.reportCollection?.items || []
 }
+export async function getReportDocuments() {
+  const entries = await fetchGraphQL(reportsDoc, 'ReportDocuments')
+  return extractReportDocuments(entries)
+}
+export function extractReportDocuments(fetchResponse: { data: any }) {
+  return fetchResponse?.data?.reportDocumentCollection?.items || []
+}
 export async function getLegalBySlug(slug: string) {
   const entry = await fetchGraphQL(legalDoc, 'LegalBySlug', { slug })
   return extractLegal(entry)
