@@ -137,6 +137,15 @@ export function Nav() {
                 Harta
               </span>
             </Link> */}
+            <Link href='/join' passHref>
+              <span
+                className={`text-base cursor-pointer font-medium ${
+                  activeRoute === '/join' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
+                } hover:text-gray-900 dark:hover:text-gray-100`}
+              >
+                Alătură-te
+              </span>
+            </Link>
             <Link href='/despre' passHref>
               <span
                 className={`text-base cursor-pointer font-medium ${
