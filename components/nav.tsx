@@ -213,6 +213,9 @@ export function Nav() {
                   {/* <Link href='/harta/bucuresti' passHref>
                     <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
                   </Link> */}
+                  <Link href='/join' passHref>
+                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Alătură-te</a>
+                  </Link>
                   <Link href='/despre' passHref>
                     <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Despre</a>
                   </Link>
