@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import Layout from 'components/layout'
-import { ReportLoader } from 'components/report-loader'
+import { ReportsTOC, ReportsLoader } from 'components/report'
 import { getReports, getReportDocuments } from '../lib/api'
 import { Report, ReportDocument } from '../lib/contentTypes'
 
@@ -40,9 +40,8 @@ export default function IndexPage({
               <p>Descarcă raportul</p>
             </a>
           </div>
-          {reports.map((report) => (
-            <ReportLoader report={report} key={report.sys.id} />
-          ))}
+          <ReportsTOC reports={reports} />
+          <ReportsLoader reports={reports} />
         </div>
       </div>
     </Layout>
