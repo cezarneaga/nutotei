@@ -50,6 +50,6 @@ function ReportLoader({ report }: { report: Report }) {
 
 function ReportHref(report: Report) {
   const lowercaseName = report.name?.toLowerCase()
-  const hyphenatedName = lowercaseName.replaceAll(' ', '-')
+  const hyphenatedName = lowercaseName.replace(/ /g, '-')
   return encodeURI(hyphenatedName)
 }
