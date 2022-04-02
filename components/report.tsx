@@ -49,5 +49,7 @@ function ReportLoader({ report }: { report: Report }) {
 }
 
 function ReportHref(report: Report) {
-  return encodeURI(report.name?.toString().toLowerCase().replaceAll(' ', '-'))
+  const lowercaseName = report.name?.toLowerCase()
+  const hyphenatedName = lowercaseName.replaceAll(' ', '-')
+  return encodeURI(hyphenatedName)
 }
