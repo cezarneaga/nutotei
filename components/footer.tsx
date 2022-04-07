@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Legal } from 'lib/contentTypes'
+import { LegalsLoader } from './legal'
 
 export function Footer({ legals }: { legals: Legal[] }) {
   const year = new Date().getFullYear()
@@ -13,15 +14,7 @@ export function Footer({ legals }: { legals: Legal[] }) {
               <a>integritatepebune.ro</a>
             </Link>
           </div>
-          <div>
-            {legals?.map((legal) => (
-              <div key={legal.sys.id}>
-                <Link href={`/legal/${legal.slug}`}>
-                  <a>{legal.name}</a>
-                </Link>
-              </div>
-            ))}
-          </div>
+          <LegalsLoader legals={legals} />
         </div>
       </div>
       <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8'>
