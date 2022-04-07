@@ -5,29 +5,32 @@ import { Report } from 'lib/contentTypes'
 export function ReportsTOC({ reports }: { reports: Report[] }) {
   return (
     <div className='py-12 px-4'>
-      {reports.map((report) => (
-        <ReportLink report={report} key={report.sys.id} />
+      {reports?.map((report, index) => (
+        <ReportLink report={report} index={index} key={report.sys.id} />
       ))}
     </div>
+  )
+}
+
+function ReportLink({ report, index }: { report: Report; index: number }) {
+  return (
+    <span className='mt-1 text-2xl font-bold sm:text-3xl sm:tracking-tight lg:text-4xl text-center'>
+      {index > 0 && <span> | </span>}
+      <Link href={`#${ReportHref(report)}`}>
+        <a title={report.name} style={{ color: '#4278b3' }}>
+          {report.name}
+        </a>
+      </Link>
+    </span>
   )
 }
 
 export function ReportsLoader({ reports }: { reports: Report[] }) {
   return (
     <div>
-      {reports.map((report) => (
+      {reports?.map((report) => (
         <ReportLoader report={report} key={report.sys.id} />
       ))}
-    </div>
-  )
-}
-
-function ReportLink({ report }: { report: Report }) {
-  return (
-    <div className='mt-1 text-2xl font-bold sm:text-3xl sm:tracking-tight lg:text-4xl text-center' style={{ color: '#4278b3' }}>
-      <Link href={`#${ReportHref(report)}`}>
-        <a title={report.name}>{report.name}</a>
-      </Link>
     </div>
   )
 }
