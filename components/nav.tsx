@@ -52,13 +52,13 @@ export function Nav() {
             </button>
           </div>
           <nav className='hidden md:flex space-x-10'>
-            <Link href='/ani-pe-bune' passHref>
+            <Link href='/portrete' passHref>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
                 } hover:text-gray-900 dark:hover:text-gray-100`}
               >
-                Integritate <sub className='font-normal italic text-sm text-[#f5c646]'>pe bune</sub>
+                Portrete
               </span>
             </Link>
             <div className='relative'>
@@ -177,11 +177,9 @@ export function Nav() {
                 </div>
               </div>
               <div className='pt-5 pb-6 px-5'>
-                <Link href='/ani-pe-bune' passHref>
+                <Link href='/portrete' passHref>
                   <div className='flex items-center'>
-                    <h1 className='font-thin text-3xl '>
-                      Integritate <sub className='font-normal text-sm text-[#f5c646] italic'>pe bune</sub>
-                    </h1>
+                    <h1 className='font-thin text-3xl '>Portrete</h1>
                     <ArrowRightCircle className='ml-4 text-gray-400' />
                   </div>
                 </Link>

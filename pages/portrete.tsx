@@ -56,13 +56,13 @@ export default function Candidat({ latest, older, total, preview }: Props) {
       ) : (
         <>
           <NextSeo
-            title={`Integritate pe bune - Integritate pe bune`}
-            description={`Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`}
-            canonical={`https://integritatepebune.ro/ani-pe-bune`}
+            title={`Portrete - Integritate pe bune`}
+            description={`Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai dure o să scriu în Libertatea.`}
+            canonical={`https://integritatepebune.ro/portrete`}
             openGraph={{
-              url: `https://integritatepebune.ro/ani-pe-bune`,
-              title: `Integritate pe bune - Integritate pe bune`,
-              description: `Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea. O să începem cu ministerele controlate de USRPLUS căci acolo sunt șansele cele mai mari să se întămple ceva.`,
+              url: `https://integritatepebune.ro/portrete`,
+              title: `Portrete - Integritate pe bune`,
+              description: `Ne-am adunat câțiva voluntari și o să încercăm să facem o cercetare, un fel de hartă a României căpușate. Despre cazurile cele mai  dure o să scriu în Libertatea.`,
               images: latest?.map((ani) => ani.mainImage),
             }}
           />

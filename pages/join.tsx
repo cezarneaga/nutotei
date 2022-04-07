@@ -8,12 +8,12 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
   return (
     <Layout preview={preview}>
       <NextSeo
-        title={`${page?.title} - Integritate pe bune`}
+        title={`Alătură-te - Integritate pe bune`}
         description={`${page?.subtitle}`}
         canonical={`https://integritatepebune.ro/${page?.slug}`}
         openGraph={{
           url: `https://integritatepebune.ro/${page?.slug}`,
-          title: `${page?.title} - Integritate pe bune`,
+          title: `Alătură-te - Integritate pe bune`,
           description: `${page?.subtitle}`,
           images: [page?.photo],
         }}
