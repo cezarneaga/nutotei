@@ -226,7 +226,7 @@ export function Nav() {
                     <Facebook />
                   </a>
                   <a
-                    href='mailto:civic@asociatiacasabuna.ro'
+                    href='mailto:contact@integritatepebune.ro'
                     className='ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
                   >
                     <Mail />

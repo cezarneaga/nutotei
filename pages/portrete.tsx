@@ -81,7 +81,7 @@ export default function Candidat({ latest, older, total, preview }: Props) {
                     </p>
                     <div className='mt-8 rounded-md shadow sm:mt-4 '>
                       <a
-                        href='mailto:civic@asociatiacasabuna.ro'
+                        href='mailto:contact@integritatepebune.ro'
                         className='w-full md:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-[#f5c646] bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'
                       >
                         Trimite-ne CV-uri
