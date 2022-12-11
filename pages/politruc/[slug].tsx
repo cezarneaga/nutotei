@@ -1,7 +1,7 @@
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 import { ReactNode } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { BLOCKS, MARKS, Block, Inline } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 

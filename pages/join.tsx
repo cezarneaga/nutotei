@@ -8,12 +8,12 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
   return (
     <Layout preview={preview}>
       <NextSeo
-        title={`Alătură-te - Integritate pe bune`}
+        title={`${page?.title} - Integritate pe bune`}
         description={`${page?.subtitle}`}
         canonical={`https://integritatepebune.ro/${page?.slug}`}
         openGraph={{
           url: `https://integritatepebune.ro/${page?.slug}`,
-          title: `Alătură-te - Integritate pe bune`,
+          title: `${page?.title} - Integritate pe bune`,
           description: `${page?.subtitle}`,
           images: [page?.photo],
         }}
@@ -34,7 +34,7 @@ export default function IndexPage({ preview, page }: { preview: boolean; page: P
   )
 }
 export async function getStaticProps({ preview = false }) {
-  const page = await getPage('despre', preview)
+  const page = await getPage('join', preview)
 
   return {
     props: {

@@ -16,10 +16,8 @@ function ReportLink({ report, index }: { report: Report; index: number }) {
   return (
     <span className='mt-1 text-2xl font-bold sm:text-3xl sm:tracking-tight lg:text-4xl text-center'>
       {index > 0 && <span> | </span>}
-      <Link href={`#${ReportHref(report)}`}>
-        <a title={report.name} style={{ color: '#4278b3' }}>
-          {report.name}
-        </a>
+      <Link href={`#${ReportHref(report)}`} title={report.name} style={{ color: '#4278b3' }}>
+        {report.name}
       </Link>
     </span>
   )

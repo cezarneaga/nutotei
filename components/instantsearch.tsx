@@ -123,28 +123,24 @@ export interface AlgoliaHit {
 function Hit({ hit }: { hit: AlgoliaHit }) {
   return (
     <div className=''>
-      <Link href={`/politruc/${hit.slug}`}>
-        <a className='inline-flex line-1'>
-          <Highlight
-            attribute='name'
-            hit={hit}
-            className='text-gray-800  text-lg font-semibold overflow-ellipsis overflow-hidden'
-          />
-          {hit.party && (
-            <span className='inline-flex items-center ml-2 my-1 px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800'>
-              <Highlight attribute='party' hit={hit} />
-            </span>
-          )}
-        </a>
+      <Link href={`/politruc/${hit.slug}`} className='inline-flex line-1'>
+        <Highlight
+          attribute='name'
+          hit={hit}
+          className='text-gray-800  text-lg font-semibold overflow-ellipsis overflow-hidden'
+        />
+        {hit.party && (
+          <span className='inline-flex items-center ml-2 my-1 px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800'>
+            <Highlight attribute='party' hit={hit} />
+          </span>
+        )}
       </Link>
       <br />
       <span className='hit-summary'>
         <Highlight attribute='review.review' hit={hit} />
       </span>
-      <Link href={`/politruc/${hit.slug}`}>
-        <a className='float-right inline-block mr-0'>
-          <ArrowRightCircle />
-        </a>
+      <Link href={`/politruc/${hit.slug}`} className='float-right inline-block mr-0'>
+        <ArrowRightCircle />
       </Link>
     </div>
   )

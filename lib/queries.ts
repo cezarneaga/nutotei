@@ -126,24 +126,6 @@ export const operationsDoc = `
       }
     }
   }
-  query PageQuery($slug: String!) {
-    page: pageCollection(where: {slug: $slug}, limit: 1) {
-      items {
-        slug
-        photo {
-          url
-          title
-          width
-          height
-        }
-        content {
-          json
-        }
-        subtitle
-        title
-      }
-    }
-  }
   query County($id: String!) {
     county: countyCollection(where: {sys: {id: $id}}, limit: 1) {
       items {
@@ -415,6 +397,26 @@ query ReportDocuments {
         size
         url
       }
+    }
+  }
+}
+`
+export const pageDoc = `
+query PageQuery($slug: String!) {
+  page: pageCollection(where: {slug: $slug}) {
+    items {
+      slug
+      photo {
+        url
+        title
+        width
+        height
+      }
+      content {
+        json
+      }
+      subtitle
+      title
     }
   }
 }

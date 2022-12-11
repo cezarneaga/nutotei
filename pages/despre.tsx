@@ -1,5 +1,5 @@
 import Layout from 'components/layout'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { ReactNode } from 'react'
 import { NextSeo } from 'next-seo'
 import { BLOCKS, MARKS, Block, Inline } from '@contentful/rich-text-types'

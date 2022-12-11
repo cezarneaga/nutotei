@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
-import { operationsDoc, ticksDoc, aniDoc, aniByPartyDoc, reportsDoc, legalDoc } from 'lib/queries'
+import { operationsDoc, ticksDoc, aniDoc, aniByPartyDoc, pageDoc, reportsDoc, legalDoc } from 'lib/queries'
 
 const space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
 const publicToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
@@ -102,9 +102,8 @@ export async function getAllAniWithSlugs() {
   return extractAniEntries(entries)
 }
 export async function getPage(slug: string, preview: boolean) {
-  const { data } = await fetchGraphQL(operationsDoc, 'PageQuery', { slug }, preview)
-
-  return data?.page.items[0]
+  const { data } = await fetchGraphQL(pageDoc, 'PageQuery', { slug }, preview)
+  return data?.page?.items[0] || []
 }
 export async function getCandidates(limit: number, preview: boolean) {
   const entries = await fetchGraphQL(operationsDoc, 'CandidateList', { limit }, preview)
@@ -124,7 +123,6 @@ export async function getCandidatesTotalByParty(party: string) {
   const { data } = await fetchGraphQL(operationsDoc, 'CandidatesTotalByParty', {
     party,
   })
-
   return data?.candidateCollection?.total || 0
 }
 export async function getCandidateBySlug(slug: string, limit: number, preview: boolean) {

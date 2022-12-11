@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Head from 'next/head'
 
 import { useState, useEffect } from 'react'
@@ -26,7 +26,7 @@ export function Nav() {
       <div className='sticky top-0 z-10 bg-white shadow-sm dark:bg-gray-800'>
         <div className='flex shadow-md justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10'>
           <div className='flex justify-start lg:w-0 lg:flex-1'>
-            <Link href='/' passHref>
+            <Link href='/' passHref legacyBehavior>
               <h1 className='text-3xl tracking-tight font-extrabold dark:text-white text-gray-900 sm:text-3xl md:text-3xl cursor-pointer'>
                 <Image src={`/images/profile.png`} height={65} width={313} alt={'logo'} />
               </h1>
@@ -52,7 +52,7 @@ export function Nav() {
             </button>
           </div>
           <nav className='hidden md:flex space-x-10'>
-            <Link href='/portrete' passHref>
+            <Link href='/portrete' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
@@ -129,15 +129,15 @@ export function Nav() {
               </Transition>
             </div>
             {/* <Link href='/harta/bucuresti' passHref>
-              <span
-                className={`text-base cursor-pointer font-medium ${
-                  activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
-                } hover:text-gray-900 dark:hover:text-gray-100`}
-              >
-                Harta
-              </span>
-            </Link> */}
-            <Link href='/join' passHref>
+            <span
+              className={`text-base cursor-pointer font-medium ${
+                activeRoute === '/harta/[:slug]' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
+              } hover:text-gray-900 dark:hover:text-gray-100`}
+            >
+              Harta
+            </span>
+          </Link> */}
+            <Link href='/join' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/join' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
@@ -146,7 +146,7 @@ export function Nav() {
                 Alătură-te
               </span>
             </Link>
-            <Link href='/despre' passHref>
+            <Link href='/despre' passHref legacyBehavior>
               <span
                 className={`text-base cursor-pointer font-medium ${
                   activeRoute === '/despre' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-200'
@@ -177,7 +177,7 @@ export function Nav() {
                 </div>
               </div>
               <div className='pt-5 pb-6 px-5'>
-                <Link href='/portrete' passHref>
+                <Link href='/portrete' passHref legacyBehavior>
                   <div className='flex items-center'>
                     <h1 className='font-thin text-3xl '>Portrete</h1>
                     <ArrowRightCircle className='ml-4 text-gray-400' />
@@ -209,13 +209,13 @@ export function Nav() {
               <div className='py-6 px-5'>
                 <div className='grid grid-cols-4 gap-4 justify-items-center'>
                   {/* <Link href='/harta/bucuresti' passHref>
-                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
-                  </Link> */}
-                  <Link href='/join' passHref>
-                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Alătură-te</a>
+                  <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Harta</a>
+                </Link> */}
+                  <Link href='/join' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Alătură-te
                   </Link>
-                  <Link href='/despre' passHref>
-                    <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Despre</a>
+                  <Link href='/despre' passHref className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                    Despre
                   </Link>
                   <a
                     href='https://www.facebook.com/Integritatepebune'

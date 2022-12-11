@@ -11,7 +11,7 @@ export function Footer({ legals }: { legals: Legal[] }) {
         <div className='mt-8 lg:mt-0'>
           <div className='mt-2 text-xl leading-8 font-extrabold tracking-tight'>
             <Link href='/' passHref>
-              <a>integritatepebune.ro</a>
+              integritatepebune.ro
             </Link>
           </div>
           <LegalsLoader legals={legals} />

@@ -15,10 +15,8 @@ function LegalLoader({ legal, index }: { legal: Legal; index: number }) {
   return (
     <span>
       {index > 0 && <span> | </span>}
-      <Link href={`/legal/${legal.slug}`}>
-        <a title={legal.name} style={{ color: '#4278b3' }}>
-          {legal.name}
-        </a>
+      <Link href={`/legal/${legal.slug}`} title={legal.name} style={{ color: '#4278b3' }}>
+        {legal.name}
       </Link>
     </span>
   )

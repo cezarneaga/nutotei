@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { Facebook } from 'react-feather'
 import { Candidate } from 'lib/contentTypes'
@@ -7,23 +7,21 @@ export function CandidateCardBig({ candidate, type }: { candidate: Candidate; ty
     <li className='card-big cursor-pointer'>
       <div className='space-y-4'>
         <div className=''>
-          <Link href={`/${type}/${candidate.slug}`}>
-            <a title={candidate.name}>
-              <Image
-                className='object-cover shadow-lg rounded-lg'
-                src={candidate.mainImage.url}
-                alt={candidate.mainImage.title}
-                width={384}
-                height={256}
-                layout='responsive'
-              />
-            </a>
+          <Link href={`/${type}/${candidate.slug}`} title={candidate.name}>
+            <Image
+              className='object-cover shadow-lg rounded-lg'
+              src={candidate.mainImage.url}
+              alt={candidate.mainImage.title}
+              width={384}
+              height={256}
+              layout='responsive'
+            />
           </Link>
         </div>
         <div className='text-lg leading-6 font-medium space-y-1'>
           <h3 className='candidate-detail'>
-            <Link href={`/${type}/${candidate.slug}`}>
-              <a title={candidate.name}>{candidate.name}</a>
+            <Link href={`/${type}/${candidate.slug}`} title={candidate.name}>
+              {candidate.name}
             </Link>
           </h3>
           <p className='text-[#f5c646]'>{candidate.party}</p>
