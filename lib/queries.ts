@@ -1,150 +1,197 @@
-export const operationsDoc = `
-  query CandidateList($limit: Int!) {
-    candidateCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
-      items {
-        sys {
-          id
-          firstPublishedAt
-        }
-        name
-        slug
-        review
-        ...imageUrl
-        documentsCollection {
-          items {
-            title
-            description
-            fileName
-            size
-            url
-          }
-        }
-        party
-        facebookLink
+export const candidateListDoc = `
+query CandidateList($limit: Int!) {
+  candidateCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
+    items {
+      sys {
+        id
+        firstPublishedAt
       }
-    }
-  }
-  query CandidateBySlug($slug: String!, $preview: Boolean!) {
-    candidateCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
-      items {
-        sys {
-          id
-          firstPublishedAt
-        }
-        name
-        slug
-        review
-        ...imageUrl
-        content{
-          json
-        }
-        documentsCollection {
-          items {
-            title
-            description
-            fileName
-            size
-            url
-          }
-        }
-        party
-        facebookLink
-      }
-    }
-  }
-  query MoreCandidates($slug: String!, $limit: Int!) {
-    candidateCollection(
-      where: { slug_not_in: [$slug] }
-      order: sys_firstPublishedAt_DESC
-      limit: $limit
-    ) {
-      items {
-        sys {
-          id
-          firstPublishedAt
-        }
-        name
-        slug
-        review
-        party
-        ...imageUrl
-      }
-    }
-  }
-  query CandidatesByCounty($county: String!) {
-    candidateCollection( where: {county: {value: $county}} order: sys_firstPublishedAt_DESC limit: 30) {
-      items {
-        sys {
-          id
-        }
-        name
-        slug
-        review
-        party
-        ...imageUrl
-        county {
-          value
-          label
-          slug
+      name
+      slug
+      review
+      ...imageUrl
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
         }
       }
+      party
+      facebookLink
     }
   }
-  query CandidatesByParty($party: String!, $limit: Int!) {
-    candidateCollection(where: { party: $party }, order: sys_firstPublishedAt_DESC, limit: $limit) {
-      items {
-        sys {
-          id
+}
+fragment imageUrl on Candidate {
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const candidateBySlugDoc = `
+query CandidateBySlug($slug: String!, $preview: Boolean!) {
+  candidateCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
+    items {
+      sys {
+        id
+        firstPublishedAt
+      }
+      name
+      slug
+      review
+      ...imageUrl
+      content{
+        json
+      }
+      documentsCollection {
+        items {
+          title
+          description
+          fileName
+          size
+          url
         }
-        name
-        slug
-        review
-        ...imageUrl
       }
+      party
+      facebookLink
     }
   }
-  query CandidatesTotalByParty($party: String!) {
-    candidateCollection(where: {party: $party}, limit:4) {
-      total
-    }
+}
+fragment imageUrl on Candidate {
+  mainImage {
+    url
+    title
+    width
+    height
   }
-
-  query AllCandidatesWithSlugs {
-    candidateCollection(
-      where: { slug_exists: true }
-      order: sys_firstPublishedAt_DESC
-    ) {
-      items {
-        slug
+}
+`
+export const moreCandidatesDoc = `
+query MoreCandidates($slug: String!, $limit: Int!) {
+  candidateCollection(
+    where: { slug_not_in: [$slug] }
+    order: sys_firstPublishedAt_DESC
+    limit: $limit
+  ) {
+    items {
+      sys {
+        id
+        firstPublishedAt
       }
+      name
+      slug
+      review
+      party
+      ...imageUrl
     }
   }
-  query AllParties{
-    candidateCollection(where: {party_exists: true}) {
-      items {
-        party
+}
+fragment imageUrl on Candidate {
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const candidatesByCountyDoc = `
+query CandidatesByCounty($county: String!) {
+  candidateCollection( where: {county: {value: $county}} order: sys_firstPublishedAt_DESC limit: 30) {
+    items {
+      sys {
+        id
       }
-    }
-  }
-  query County($id: String!) {
-    county: countyCollection(where: {sys: {id: $id}}, limit: 1) {
-      items {
-        slug
+      name
+      slug
+      review
+      party
+      ...imageUrl
+      county {
         value
         label
+        slug
       }
     }
   }
-  fragment imageUrl on Candidate {
-    mainImage {
-      url
-      title
-      width
-      height
+}
+fragment imageUrl on Candidate {
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const candidatesByPartyDoc = `
+query CandidatesByParty($party: String!, $limit: Int!) {
+  candidateCollection(where: { party: $party }, order: sys_firstPublishedAt_DESC, limit: $limit) {
+    items {
+      sys {
+        id
+      }
+      name
+      slug
+      review
+      ...imageUrl
     }
   }
+}
+fragment imageUrl on Candidate {
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
 `
-export const ticksDoc = `
+export const candidatesTotalByPartyDoc = `
+query CandidatesTotalByParty($party: String!) {
+  candidateCollection(where: {party: $party}, limit:4) {
+    total
+  }
+}
+`
+export const allCandidatesWithSlugDoc = `
+query AllCandidatesWithSlugs {
+  candidateCollection(
+    where: { slug_exists: true }
+    order: sys_firstPublishedAt_DESC
+  ) {
+    items {
+      slug
+    }
+  }
+}
+`
+export const allPartiesDoc = `
+query AllParties{
+  candidateCollection(where: {party_exists: true}) {
+    items {
+      party
+    }
+  }
+}
+`
+export const countyDoc = `
+query County($id: String!) {
+  county: countyCollection(where: {sys: {id: $id}}, limit: 1) {
+    items {
+      slug
+      value
+      label
+    }
+  }
+}
+`
+export const allTicksBySlugDoc = `
 query AllTicksWithSlugs {
   tickCollection(
     where: { slug_exists: true }
@@ -155,6 +202,8 @@ query AllTicksWithSlugs {
     }
   }
 }
+`
+export const tickListDoc = `
 query TicksList($limit: Int!) {
   tickCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
     items {
@@ -180,7 +229,16 @@ query TicksList($limit: Int!) {
     }
   }
 }
-
+fragment photoUrl on Tick{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const tickBySlugDoc = `
 query TickBySlug($slug: String!, $preview: Boolean!) {
   tickCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
     items {
@@ -209,6 +267,16 @@ query TickBySlug($slug: String!, $preview: Boolean!) {
     }
   }
 }
+fragment photoUrl on Tick{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const moreTicksDoc = `
 query MoreTicks($slug: String!, $limit: Int!) {
   tickCollection(where: {slug_not_in: [$slug]}, order: sys_firstPublishedAt_DESC, limit: $limit) {
     items {
@@ -233,7 +301,7 @@ fragment photoUrl on Tick{
   }
 }
 `
-export const aniDoc = `
+export const allAniBySlugDoc = `
 query AllAniWithSlugs {
   aniPeBuneCollection(
     where: { slug_exists: true }
@@ -244,6 +312,8 @@ query AllAniWithSlugs {
     }
   }
 }
+`
+export const aniListDoc = `
 query AniList($limit: Int!) {
   aniPeBuneCollection(limit: $limit,order:sys_firstPublishedAt_DESC) {
     items {
@@ -269,7 +339,16 @@ query AniList($limit: Int!) {
     }
   }
 }
-
+fragment photoUrl on AniPeBune{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const aniBySlugDoc = `
 query AniBySlug($slug: String!, $preview: Boolean!) {
   aniPeBuneCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
     items {
@@ -298,6 +377,16 @@ query AniBySlug($slug: String!, $preview: Boolean!) {
     }
   }
 }
+fragment photoUrl on AniPeBune{
+  mainImage {
+    url
+    title
+    width
+    height
+  }
+}
+`
+export const moreAniDoc = `
 query MoreAni($slug: String!, $limit: Int!) {
   aniPeBuneCollection(where: {slug_not_in: [$slug]}, order: sys_firstPublishedAt_DESC, limit: $limit) {
     items {
@@ -352,17 +441,19 @@ query AniByParty($party: String!, $limit: Int!) {
       }
   }
 }
-query AniTotalByParty($party: String!) {
-  aniPeBuneCollection(where: {party: $party}, limit: 4) {
-    total
-  }
-}
 fragment photoUrl on AniPeBune{
   mainImage {
     url
     title
     width
     height
+  }
+}
+`
+export const aniTotalByPartyDoc = `
+query AniTotalByParty($party: String!) {
+  aniPeBuneCollection(where: {party: $party}, limit: 4) {
+    total
   }
 }
 `
@@ -438,6 +529,8 @@ query LegalBySlug($slug: String!) {
     }
   }
 }
+`
+export const allLegalsDoc = `
 query AllLegalsWithSlugs {
   legalCollection(where: { slug_exists: true }, order: order_ASC) {
     items {
