@@ -20,7 +20,8 @@ import {
   aniByPartyDoc,
   aniTotalByPartyDoc,
   pageDoc,
-  reportsDoc,
+  // reportsDoc,
+  getReportsDoc,
   legalDoc,
   allLegalsDoc,
 } from 'lib/queries'
@@ -190,15 +191,18 @@ export async function getAniTotalByParty(party: string) {
   const { data } = await fetchGraphQL(aniTotalByPartyDoc, 'AniTotalByParty', { party })
   return data?.aniPeBuneCollection?.total || 0
 }
-export async function getReports() {
-  const entries = await fetchGraphQL(reportsDoc, 'Reports')
+
+export async function getReports(year: number) {
+  const entries = await fetchGraphQL(getReportsDoc(year), 'Reports')
+  const reports = extractReports(entries);
   return extractReports(entries)
 }
+
 export function extractReports(fetchResponse: { data: any }) {
   return fetchResponse?.data?.reportCollection?.items || []
 }
-export async function getReportDocuments() {
-  const entries = await fetchGraphQL(reportsDoc, 'ReportDocuments')
+export async function getReportDocuments(year: number) {
+  const entries = await fetchGraphQL(getReportsDoc(year), 'ReportDocuments')
   return extractReportDocuments(entries)
 }
 export function extractReportDocuments(fetchResponse: { data: any }) {

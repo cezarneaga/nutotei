@@ -23,4 +23,16 @@ body {
 /* Your own custom utilities */
 /*! purgecss start ignore */
 @import "search.css";
+
 /*! purgecss end ignore */
+html,
+body,
+body>div {
+  height: 100%;
+}
+
+*/ .container {
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+}

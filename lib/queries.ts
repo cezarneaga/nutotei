@@ -457,9 +457,11 @@ query AniTotalByParty($party: String!) {
   }
 }
 `
-export const reportsDoc = `
+
+export function getReportsDoc(year: number): string {
+  return `
 query Reports {
-  reportCollection(order: order_ASC) {
+  reportCollection(where: {year: ${year}}, order: order_ASC) {
     items {
       sys {
         id
@@ -492,6 +494,42 @@ query ReportDocuments {
   }
 }
 `
+}
+// `
+// query Reports {
+//   reportCollection(filter: ${}, order: order_ASC) {
+//     items {
+//       sys {
+//         id
+//         publishedAt
+//         firstPublishedAt
+//       }
+//       id
+//       name
+//       order
+//     }
+//   }
+// }
+// query ReportDocuments {
+//   reportDocumentCollection {
+//     items {
+//       sys {
+//         id
+//         publishedAt
+//         firstPublishedAt
+//       }
+//       name
+//       document {
+//         title
+//         description
+//         fileName
+//         size
+//         url
+//       }
+//     }
+//   }
+// }
+// `
 export const pageDoc = `
 query PageQuery($slug: String!) {
   page: pageCollection(where: {slug: $slug}) {

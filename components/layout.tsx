@@ -29,9 +29,11 @@ export default function Layout({ preview, children }: { preview: boolean; childr
 
   return (
     <>
-      <Nav />
-      {children}
-      <Footer legals={legals} />
+      <div className='container'>
+        <Nav />
+        {children}
+        <Footer legals={legals} />
+      </div>
     </>
   )
 }

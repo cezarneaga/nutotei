@@ -1,13 +1,9 @@
-import { NextSeo } from 'next-seo'
 import Layout from 'components/layout'
-import { ReportsTOC, ReportsLoader } from 'components/report'
-import { getReports, getReportDocuments } from '../lib/api'
+import { NextSeo } from 'next-seo'
 import { Report, ReportDocument } from '../lib/contentTypes'
 
 export default function IndexPage({
-  preview,
-  reports,
-  reportDocuments,
+  preview
 }: {
   preview: boolean
   reports: Report[]
@@ -26,37 +22,19 @@ export default function IndexPage({
           images: [{ url: 'https://integritatepebune.ro/images/profile.png' }],
         }}
       />
-      <div className='bg-white'>
-        <div className='mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
-          <div className='mt-1 text-4xl font-bold sm:text-5xl sm:tracking-tight lg:text-6xl text-center'>
-            <a
-              id='report-pdf'
-              href={reportDocuments[0].document.url}
-              target='_blank'
-              title='Descarcă raportul în format PDF'
-              rel='noopener noreferrer'
-              style={{ color: '#4278b3' }}
-            >
-              <p>Descarcă raportul</p>
-            </a>
-          </div>
-          <ReportsTOC reports={reports} />
-          <ReportsLoader reports={reports} />
-        </div>
+
+      <div className='flex justify-center' style={{ height: '60vh', marginTop: '1em' }}>
+        <h5 style={{ fontSize: '5em', marginTop: '1.2em' }}>Integritate pe bune</h5>
       </div>
-    </Layout>
+
+    </Layout >
   )
 }
 
 export async function getStaticProps({ preview = false }) {
-  const reports: Report[] = await getReports()
-  const reportDocuments: ReportDocument[] = await getReportDocuments()
-
   return {
     props: {
       preview,
-      reports,
-      reportDocuments,
     },
   }
 }
